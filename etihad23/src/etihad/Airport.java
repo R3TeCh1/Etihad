@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Set;
+
 package etihad;
 
 /**
@@ -12,6 +15,12 @@ public class Airport {
   private City[] cities;
   private City catchmentArea;
   private Flight[] flights;
+  private String infrastructure;
+
+  Set<Flight> aSetOfdepartures = new HashSet<Flight>();
+  Set<Flight> aSetOfarrivals = new HashSet<Flight>();
+
+
 
 
 //constructor
@@ -21,6 +30,8 @@ public class Airport {
     this.cities = cities;
     this.catchmentArea = catchmentArea;
     this.flights = flights;
+    aSetOfdepartures.addAll(flights);
+    aSetOfarrivals.addAll(flights);
   }
 
   //Methods

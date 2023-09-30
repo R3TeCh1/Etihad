@@ -5,7 +5,7 @@ package etihad;
  */
 public class City {
   private String name;
-  private Airport infrastructure;
+  private Airport[] infrastructure;
 
 //constructor
   public City(String name, Airport infrastructure){
