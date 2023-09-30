@@ -7,6 +7,8 @@ public class City {
   private String name;
   private Airport[] infrastructure;
 
+
+
 //constructor
   public City(String name, Airport[] infrastructure){
     this.name= name;
@@ -17,8 +19,16 @@ public class City {
     return name;
   }
 
+  public Airport[] getInfrastructure(){
+    return infrastructure;
+  }
+
   public void setName(String name){
     this.name= name;
+  }
+
+  public void setInfrastructure(Airport[] infrastructure){
+    this.infrastructure= infrastructure;
   }
 
 }
