@@ -12,7 +12,6 @@ public class Airport {
 
   private String name;
   private String iataCode;
-  private City[] cities;
   private City catchmentArea;
   private Flight[] flights;
   private String infrastructure;
@@ -24,10 +23,9 @@ public class Airport {
 
 
 //constructor
-  public Airport(String name, String iataCode, City[] cities, City catchmentArea, Flight[] flights) {
+  public Airport(String name, String iataCode, City catchmentArea, Flight[] flights) {
     this.name = name;
     this.iataCode = iataCode;
-    this.cities = cities;
     this.catchmentArea = catchmentArea;
     this.flights = flights;
     aSetOfdepartures.add(flights);
@@ -50,8 +48,6 @@ public class Airport {
 
     return iataCode;
   }
-
-
 
   //setters
 

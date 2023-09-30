@@ -8,7 +8,7 @@ public class City {
   private Airport[] infrastructure;
 
 //constructor
-  public City(String name, Airport infrastructure){
+  public City(String name, Airport[] infrastructure){
     this.name= name;
     this.infrastructure= infrastructure;
   }
