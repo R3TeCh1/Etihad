@@ -1,9 +1,9 @@
 package etihad;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
- * @author Kadir
+ * @author Kadir Erzurum
  * @version 30.09.2023
  */
 public class Flight {
@@ -11,7 +11,7 @@ public class Flight {
   //DEKLARIEREN----------------------------------------------------------------
 
   //-date
-  private Date date;
+  private LocalDate date;
   //-flightNum
   private String flightNum;
   //Airport
@@ -21,6 +21,7 @@ public class Flight {
   private Airline organizer;
   //Passenger
   private Passenger[] passenger;
+  private int passengerCounter = 0;
   //Pilot
   private Pilot captain;
   private Pilot coPilot;
@@ -30,13 +31,16 @@ public class Flight {
 
 
   //Konstruktor
-  public Flight(Date date, String flightNum, Airport [] origin, Airport [] destination, Airline organizer, Passenger [] passenger, Pilot captain, Pilot coPilot, Pilot flightEngineer, Plane vehicle){
+  public Flight(LocalDate date, String flightNum, Airport [] origin, Airport [] destination, Airline organizer, Passenger [] passenger, Pilot captain, Pilot coPilot, Pilot flightEngineer, Plane vehicle){
     this.date = date;
     this.flightNum = flightNum;
     this.origin = origin;
     this.destination = destination;
     this.organizer = organizer;
-    this.passenger = passenger;
+    this.passenger = new Passenger[853];
+    for (int i = 0; i < passenger.length; i++) {
+      this.passenger[i] = passenger[i];
+    }
     this.captain = captain;
     this.coPilot = coPilot;
     this.flightEngineer = flightEngineer;
@@ -47,29 +51,45 @@ public class Flight {
 
   //+refuel
   public void refuel(){
-
+    System.out.println("Flugzeug wurde getankt.");
   }
+
   //+takeOff
   public void takeOff(){
-
+    System.out.println("Flugzeug ist abgehoben");
   }
+
   //+land
   public void land(){
-
+    System.out.println("Flugzeug ist gelandet.");
   }
+
   //+delay
-  public void delay(){
-
+  public void delay(LocalDate delayedTo){
+    setDate(delayedTo);
+    System.out.println(toString() + " verspätet sich - Neue Zeit: " + delayedTo);
   }
+
   //+cancel
   public void cancel(){
+    System.out.println("Flug " + flightNum + " wurde storniert.");
+  }
 
+  public void addPassenger(Passenger... passengers) {
+    for (Passenger passenger : passengers) {
+      if (passengerCounter < this.passenger.length) {
+        this.passenger[passengerCounter] = passenger;
+        passengerCounter++;
+      } else {
+        System.out.println("Der Flug ist ausgebucht, es können keine weiteren Passagiere hinzugefügt werden.");
+      }
+    }
   }
 
 
   //GETTER----------------------------------------------------------------
 
-  public Date getDate(){
+  public LocalDate getDate(){
     return date;
   }
 
@@ -111,7 +131,7 @@ public class Flight {
 
   //SETTER----------------------------------------------------------------
 
-  public void setDate(Date date){
+  public void setDate(LocalDate date){
     this.date = date;
   }
 
