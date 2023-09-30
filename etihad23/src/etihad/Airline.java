@@ -4,12 +4,10 @@ package etihad;
  * @version 30.09.2023
  */
 public class Airline {
-
     private String name;
     private String iataCode;
 
     //Getter
-
     public String getName(){
         return name;
     }
@@ -18,8 +16,8 @@ public class Airline {
         return iataCode;
 
     }
-    //Setter
 
+    //Setter
     public void setName(String name){
         this.name=name;
 
@@ -27,6 +25,4 @@ public class Airline {
     public void setIataCode(String iataCode){
         this.iataCode=iataCode;
     }
-
-
 }
