@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class Flight {
 
-  //DEKLARATION----------------------------------------------------------------
+  //DEKLARIEREN----------------------------------------------------------------
 
   //-date
   private Date date;
@@ -149,5 +149,11 @@ public class Flight {
 
   public void setVehicle(Plane vehicle){
     this.vehicle = vehicle;
+  }
+
+  //TOSTRING--------------------------------------------------------
+  @Override
+  public String toString(){
+    return getClass().getSimpleName() + " " + flightNum;
   }
 }

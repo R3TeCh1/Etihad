@@ -10,9 +10,8 @@ public class City {
 
 
 //constructor
-  public City(String name, Airport[] infrastructure){
+  public City(String name){
     this.name= name;
-    this.infrastructure= infrastructure;
   }
 
   public String getName(){
