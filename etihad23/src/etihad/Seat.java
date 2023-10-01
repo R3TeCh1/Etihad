@@ -1,6 +1,6 @@
 package etihad;
 /**
- * @author David
+ * @author David Rischow
  * @version 30.09.2023
  */
 public class Seat {

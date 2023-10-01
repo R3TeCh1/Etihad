@@ -22,7 +22,7 @@ public class Main {
     coPilot = new Pilot("The Co Pilot");
     flightEngineer = new Pilot("The Flight Engineer");
     Pilot[] pilots = new Pilot[]{captain,coPilot,flightEngineer};
-    Plane vehicle = new Plane();
+    Plane vehicle = new Plane("Airbus a320", "323432432", 221, "D-3242");
     flight = new Flight(date, "LH400", origin, destination, organizer, passengers, captain, coPilot, flightEngineer, vehicle);
   }
 }
