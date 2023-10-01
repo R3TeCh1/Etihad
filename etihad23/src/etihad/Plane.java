@@ -17,6 +17,8 @@ public class Plane {
 
     String status = "onLand";
 
+    Seat[] seats;
+
     public Plane(String model, String searialNum, int hoursFlown, String tailNr) {
         this.model = model;
         this.searialNum = searialNum;
