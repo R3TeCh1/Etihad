@@ -11,6 +11,7 @@ import java.util.Set;
 public class City {
   private String name;
   private Airport[] infrastructure;
+  private City[] catchmentArea;
   private Set<Airport> airports = new HashSet<>();
 
 
@@ -27,8 +28,12 @@ public class City {
     return name;
   }
 
-  public Set<Airport> getAirports() {
-    return airports;
+  public Airport[] getInfrastructure() {
+    return infrastructure;
+  }
+
+  public City[] getCatchmentArea() {
+    return catchmentArea;
   }
 
 
@@ -36,6 +41,18 @@ public class City {
   //Setter
   public void setName(String name){
     this.name= name;
+  }
+
+  public Set<Airport> getAirports() {
+    return airports;
+  }
+
+  public void setCatchmentArea(City[] catchmentArea) {
+    this.catchmentArea = catchmentArea;
+  }
+
+  public void setAirports(Set<Airport> airports) {
+    this.airports = airports;
   }
 
 

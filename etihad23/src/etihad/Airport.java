@@ -1,5 +1,6 @@
 package etihad;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,12 +14,15 @@ public class Airport {
   private String name;
   private String iataCode;
   private City[] catchmentArea;
+  private City[] infrastructure;
   private Set<City> cities = new HashSet<>();
   Set<Flight> aSetOfdepartures = new HashSet<Flight>();
   Set<Flight> aSetOfarrivals = new HashSet<Flight>();
 
 
-//constructor
+
+
+  //constructor
   public Airport(String name, String iataCode) {
     this.name = name;
     this.iataCode = iataCode;
@@ -52,6 +56,13 @@ public class Airport {
     return aSetOfarrivals;
   }
 
+  public City[] getInfrastructure() {
+    return infrastructure;
+  }
+
+  public City[] getCatchmentArea() {
+    return catchmentArea;
+  }
 
 
   //Setters----------------------------------------------------------------
@@ -70,6 +81,11 @@ public class Airport {
 
   public void setASetOfarrivals(Set<Flight> aSetOfarrivals) {
     this.aSetOfarrivals = aSetOfarrivals;
+  }
+
+  public void setInfrastructure(City[] infrastructure) {
+    this.infrastructure = infrastructure;
+    System.out.println("Airport " + name + " has the following infrastructure: " +Arrays.toString(infrastructure));
   }
 
   // Setter für Verknüpfung mit City
