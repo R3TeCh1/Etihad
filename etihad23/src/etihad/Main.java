@@ -9,6 +9,7 @@ public class Main {
   private Pilot captain;
   private Pilot coPilot;
   private Pilot flightEngineer;
+  private Airport airport;
 
   public static void main(String[] args) {
     Main main = new Main();
@@ -34,6 +35,6 @@ public class Main {
 
     //Ausgabe
     System.out.println("Flight " + flight.getFlightNum() + " is created with " + passengers.size() + " passengers.");
-
+    flight.cancel();
   }
 }
