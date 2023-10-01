@@ -13,22 +13,18 @@ public class Airport {
   private String name;
   private String iataCode;
   private City[] catchmentArea;
-
+  private Set<City> cities = new HashSet<>();
   Set<Flight> aSetOfdepartures = new HashSet<Flight>();
   Set<Flight> aSetOfarrivals = new HashSet<Flight>();
 
 
 //constructor
-  public Airport(String name, String iataCode, City[] catchmentArea) {
+  public Airport(String name, String iataCode) {
     this.name = name;
     this.iataCode = iataCode;
-    catchmentArea = new City[3];
-    catchmentArea[0] = new City("London");
-    catchmentArea[1] = new City("Paris");
-    catchmentArea[2] = new City("Rome");
-    //aSetOfdepartures.add(flights);
-    //aSetOfarrivals.add(flights);
+    System.out.println("Airport " + name + " created");
   }
+
 
   //Methods----------------------------------------------------------------
   public void deice(){
@@ -44,9 +40,18 @@ public class Airport {
     return iataCode;
   }
 
-  public City[] getCatchmentArea(){
-    return catchmentArea;
+  public Set<City> getCities() {
+    return cities;
   }
+
+  public Set<Flight> getASetOfdepartures() {
+    return aSetOfdepartures;
+  }
+
+  public Set<Flight> getaSetOfarrivals() {
+    return aSetOfarrivals;
+  }
+
 
 
   //Setters----------------------------------------------------------------
@@ -58,9 +63,6 @@ public class Airport {
     this.iataCode=iataCode;
   }
 
-  public void setCatchmentArea(City[] catchmentArea) {
-    this.catchmentArea = catchmentArea;
-  }
 
   public void setASetOfdepartures(Set<Flight> aSetOfdepartures) {
     this.aSetOfdepartures = aSetOfdepartures;
@@ -70,6 +72,33 @@ public class Airport {
     this.aSetOfarrivals = aSetOfarrivals;
   }
 
+  // Setter für Verknüpfung mit City
+  public void setCatchmentArea(City[] catchmentArea) {
+    this.catchmentArea = catchmentArea;
+    System.out.println("Airport " + name + " is linked to City " + catchmentArea[0].getName());
+  }
+
+  // Methode zum Hinzufügen einer Stadt zum Airport
+  public void addCity(City city) {
+    cities.add(city);
+    System.out.println("City " + city.getName() + " is linked to Airport " + name);
+  }
+
+  // Methode zum Hinzufügen eines Flugs zu den Abflügen
+  public void addDepartureFlight(Flight flight) {
+    aSetOfdepartures.add(flight);
+    System.out.println("Flight " + flight.getFlightNum() + " is departing from Airport " + name);
+  }
+
+  // Methode zum Hinzufügen eines Flugs zu den Ankünften
+  public void addArrivalFlight(Flight flight) {
+    aSetOfarrivals.add(flight);
+    System.out.println("Flight " + flight.getFlightNum() + " is arriving at Airport " + name);
+  }
+
+
+
+//toString
 
   @Override
   public String toString() {
