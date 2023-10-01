@@ -1,66 +1,113 @@
 package etihad;
 
 import java.util.Objects;
+import java.util.List;
 
 /**
  * @author David Rischow
  * @version 30.09.2023
  */
 public class Plane {
-
     String model;
-    String searialNum;
+    String serialNum;
     int hoursFlown;
     String tailNr;
-
     Airline airline;
-
     String status = "onLand";
+    List<Seat> seats;
 
-    Seat[] seats;
-
-    public Plane(String model, String searialNum, int hoursFlown, String tailNr) {
+    public Plane(String model, String serialNum, String tailNr) {
         this.model = model;
-        this.searialNum = searialNum;
-        this.hoursFlown = hoursFlown;
+        this.serialNum = serialNum;
         this.tailNr = tailNr;
     }
 
-
-    public String rent(Airline airLine) {
+    public void rent(Airline airLine) {
         if (airline == null) {
             this.airline = airLine;
-            return "Airplane is now rent by" + airline.getName();
+            System.out.println(toString() + " is rent by " + airLine.getName());
         } else {
-            return "Airplane is already rent by" + airline.getName();
+            System.out.println(toString() + " is already rent by " + airline.getName());
         }
     }
 
-    public String clean() {
-        return "Airplane" + this.tailNr + "cleaned";
+    public void clean() {
+        System.out.println(toString() + " cleaned");
     };
 
-    public String refuel() {
-        return "Airplane" + this.tailNr + "was refueld";
+    public void refuel() {
+        System.out.println(toString() + " refueled");
     };
 
-    public String takeOff() {
+    public void takeOff() {
         if(Objects.equals(status, "onLand")) {
             this.status = "inAir";
-            return "Airplane" + this.tailNr + "took off";
+            System.out.println(toString() + " took off");
         } else {
-            return "Airplane" + this.tailNr + "is already in the air.";
+            System.out.println(toString() + " already in the air");
         }
     };
 
-    public String land() {
+    public void land() {
         if(Objects.equals(status, "inAir")) {
             this.status = "onLand";
-            return "Airplane" + this.tailNr + "landed";
+            System.out.println(toString() + " already on the floor");
         } else {
-            return "Airplane" + this.tailNr + "is already on the floor.";
+            System.out.println(toString() + " landed");
         }
     };
+
+    public void addSeat(int row, char place) {
+        for (Seat existingSeat : seats) {
+            if (existingSeat.getRow() == row && existingSeat.getPlace() == place) {
+                System.out.println(toString() + ": Seat already exist");
+                return;
+            }
+        }
+        seats.add(new Seat(row, place, this));
+        System.out.println(toString() + ": Seat added");
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public String getSerialNum() {
+        return serialNum;
+    }
+
+    public int getHoursFlown() {
+        return hoursFlown;
+    }
+
+    public String getTailNr() {
+        return tailNr;
+    }
+
+    public Airline getAirline() {
+        return airline;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setHoursFlown(int hoursFlown) {
+        this.hoursFlown = hoursFlown;
+    }
+
+    public void setAirline(Airline airline) {
+        this.airline = airline;
+    }
+
+    public String toString() {
+        return getClass().getSimpleName() +", "+ this.tailNr;
+    }
+
 
 
 }

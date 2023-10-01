@@ -7,14 +7,28 @@ public class Seat {
 
     final int row;
     final char place;
-
     boolean reservation;
     final Plane plane;
 
-    public Seat(int row, char place, boolean reservation, Plane plane) {
+    public int getRow() {
+        return row;
+    }
+
+    public char getPlace() {
+        return place;
+    }
+
+    public boolean isReservation() {
+        return reservation;
+    }
+
+    public Plane getPlane() {
+        return plane;
+    }
+
+    public Seat(int row, char place, Plane plane) {
         this.row = row;
         this.place = place;
-        this.reservation = reservation;
         this.plane = plane;
         System.out.println(toString() + " created");
     }
