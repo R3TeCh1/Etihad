@@ -1,10 +1,16 @@
 package etihad;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
+ * Die Klasse Flight repräsentiert einen Flug mit verschiedenen Eigenschaften wie Datum, Flugnummer,
+ * Herkunfts- und Zielorte, Airline, Passagierliste, Piloten und Flugzeug.
+ *
  * @author Kadir Erzurum
- * @version 30.09.2023
+ * @version 01.10.2023
  */
 public class Flight {
 
@@ -20,8 +26,8 @@ public class Flight {
   //Airline
   private Airline organizer;
   //Passenger
-  private Passenger[] passenger;
-  private int passengerCounter = 0;
+  private List<Passenger> passengers = new ArrayList<>();
+  private static final int MAX_PASSENGERS = 853;
   //Pilot
   private Pilot captain;
   private Pilot coPilot;
@@ -30,60 +36,144 @@ public class Flight {
   private Plane vehicle;
 
 
-  //Konstruktor
-  public Flight(LocalDate date, String flightNum, Airport [] origin, Airport [] destination, Airline organizer, Passenger [] passenger, Pilot captain, Pilot coPilot, Pilot flightEngineer, Plane vehicle){
+  /**
+   * Konstruktor für die Klasse Flight.
+   *
+   * @param date Das Datum des Fluges.
+   * @param flightNum Die Flugnummer.
+   * @param origin Die Flughäfen des Ursprungs.
+   * @param destination Die Flughäfen des Ziels.
+   * @param organizer Die Fluggesellschaft (Airline).
+   * @param passengers Die Liste der Passagiere.
+   * @param captain Der Kapitän des Fluges.
+   * @param coPilot Der Co-Pilot des Fluges.
+   * @param flightEngineer Der Flugingenieur des Fluges.
+   * @param vehicle Das Flugzeug, das für den Flug verwendet wird.
+   */
+  public Flight(LocalDate date, String flightNum, Airport [] origin, Airport [] destination, Airline organizer, List<Passenger> passengers, Pilot captain, Pilot coPilot, Pilot flightEngineer, Plane vehicle){
     this.date = date;
     this.flightNum = flightNum;
     this.origin = origin;
     this.destination = destination;
     this.organizer = organizer;
-    this.passenger = new Passenger[853];
-    for (int i = 0; i < passenger.length; i++) {
-      this.passenger[i] = passenger[i];
-    }
+    this.passengers.addAll(passengers);
     this.captain = captain;
     this.coPilot = coPilot;
     this.flightEngineer = flightEngineer;
     this.vehicle = vehicle;
+
+    System.out.println(toString() + " created");
   }
 
   //METHODEN----------------------------------------------------------------
 
-  //+refuel
+  /**
+   * Betankt das Flugzeug.
+   */
   public void refuel(){
-    System.out.println("Flugzeug wurde getankt.");
+    System.out.println(toString() + " wurde betankt.");
   }
 
-  //+takeOff
+  /**
+   * Lässt das Flugzeug abheben.
+   */
   public void takeOff(){
-    System.out.println("Flugzeug ist abgehoben");
+    System.out.println(toString() + " ist abgehoben");
   }
 
-  //+land
+  /**
+   * Lässt das Flugzeug landen.
+   */
   public void land(){
-    System.out.println("Flugzeug ist gelandet.");
+    System.out.println(toString() + " ist gelandet.");
   }
 
-  //+delay
+  /**
+   * Verzögert den Flug auf das angegebene Datum.
+   *
+   * @param delayedTo Das neue Datum für die Verspätung.
+   */
   public void delay(LocalDate delayedTo){
     setDate(delayedTo);
     System.out.println(toString() + " verspätet sich - Neue Zeit: " + delayedTo);
   }
 
-  //+cancel
+  /**
+   * Storniert den Flug.
+   */
   public void cancel(){
-    System.out.println("Flug " + flightNum + " wurde storniert.");
+    System.out.println("Der Flug " + toString() + " " + flightNum + " wurde storniert.");
   }
 
-  public void addPassenger(Passenger... passengers) {
-    for (Passenger passenger : passengers) {
-      if (passengerCounter < this.passenger.length) {
-        this.passenger[passengerCounter] = passenger;
-        passengerCounter++;
-      } else {
-        System.out.println("Der Flug ist ausgebucht, es können keine weiteren Passagiere hinzugefügt werden.");
-      }
+  /**
+   * Fügt einen Passagier zur Passagierliste hinzu.
+   *
+   * @param passenger Der hinzuzufügende Passagier.
+   */
+  public void addPassenger(Passenger passenger) {
+    if (passengers.size() < MAX_PASSENGERS) {
+      passengers.add(passenger);
+      System.out.println(toString() + " wurde zum Passagier " + passenger.getName());
+    } else {
+      System.out.println("Der Flug ist ausgebucht, es können keine weiteren Passagiere hinzugefügt werden.");
     }
+  }
+
+  /**
+   * Weist dem Flug einen Kapitän zu.
+   *
+   * @param captain Der zuzuweisende Kapitän.
+   */
+  public void assignCaptain(Pilot captain) {
+    this.captain = captain;
+    captain.book(this); // Hier wird der Flug dem Kapitän zugewiesen
+    System.out.println(toString() + " wurde zum Kapitän " + captain.getName());
+  }
+
+  /**
+   * Weist dem Flug einen Co-Piloten zu.
+   *
+   * @param coPilot Der zuzuweisende Co-Pilot.
+   */
+  public void assignCoPilot(Pilot coPilot) {
+    this.coPilot = coPilot;
+    coPilot.book(this); // Hier wird der Flug dem Co-Piloten zugewiesen
+    System.out.println(toString() + " wurde zum Co-Pilot " + coPilot.getName());
+  }
+
+  /**
+   * Weist dem Flug einen Flugingenieur zu.
+   *
+   * @param flightEngineer Der zuzuweisende Flugingenieur.
+   */
+  public void assignFlightEngineer(Pilot flightEngineer) {
+    this.flightEngineer = flightEngineer;
+    flightEngineer.book(this); // Hier wird der Flug dem Flugingenieur zugewiesen
+    System.out.println(toString() + " wurde zum Flugingenieur " + flightEngineer.getName());
+  }
+
+  /**
+   * Weist dem Flug eine Airline zu.
+   *
+   * @param airline Die zuzuweisende Airline.
+   */
+  public void assignAirline(Airline airline) {
+    this.organizer = airline;
+    System.out.println(toString() + " wurde zur Airline " + airline.getName());
+  }
+
+  /**
+   * Startet den Flug und gibt eine Erfolgsmeldung aus.
+   */
+  public void startFlight() {
+    System.out.println(toString() + " hat den Flug erfolgreich gestartet.");
+  }
+
+  /**
+   * Beendet den Flug und gibt eine Erfolgsmeldung aus.
+   */
+  public void finishFlight() {
+    System.out.println(toString() + " hat den Flug erfolgreich beendet.");
   }
 
 
@@ -109,8 +199,8 @@ public class Flight {
     return organizer;
   }
 
-  public Passenger[] getPassenger(){
-    return passenger;
+  public List<Passenger> getPassengers(){
+    return passengers;
   }
 
   public Pilot getCaptain(){
@@ -151,8 +241,8 @@ public class Flight {
     this.organizer = organizer;
   }
 
-  public void setPassenger(Passenger[] passenger){
-    this.passenger = passenger;
+  public void setPassenger(List<Passenger> passengers){
+    this.passengers = passengers;
   }
 
   public void setCaptain(Pilot captain){
@@ -172,6 +262,11 @@ public class Flight {
   }
 
   //TOSTRING--------------------------------------------------------
+  /**
+   * Gibt eine Zeichenfolge zurück, die den Klassennamen und die Flugnummer darstellt.
+   *
+   * @return Eine Zeichenfolge im Format "Klassenname Flugnummer".
+   */
   @Override
   public String toString(){
     return getClass().getSimpleName() + " " + flightNum;
