@@ -34,6 +34,6 @@ public class Main {
 
     //Ausgabe
     System.out.println("Flight " + flight.getFlightNum() + " is created with " + passengers.size() + " passengers.");
-
+    flight.cancel();
   }
 }

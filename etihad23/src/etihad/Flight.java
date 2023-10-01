@@ -2,7 +2,6 @@ package etihad;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -32,6 +31,7 @@ public class Flight {
   private Pilot captain;
   private Pilot coPilot;
   private Pilot flightEngineer;
+  //private List<Pilot> pilots = new ArrayList<>();
   //Plane
   private Plane vehicle;
 
@@ -102,7 +102,7 @@ public class Flight {
    * Storniert den Flug.
    */
   public void cancel(){
-    System.out.println("Der Flug " + toString() + " " + flightNum + " wurde storniert.");
+    System.out.println("Der Flug " + toString() + " " + " wurde storniert.");
   }
 
   /**
