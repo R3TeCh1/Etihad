@@ -1,6 +1,9 @@
 package etihad;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Kadir Erzurum
@@ -20,8 +23,8 @@ public class Flight {
   //Airline
   private Airline organizer;
   //Passenger
-  private Passenger[] passenger;
-  private int passengerCounter = 0;
+  private List<Passenger> passengers = new ArrayList<>();
+  private static final int MAX_PASSENGERS = 853;
   //Pilot
   private Pilot captain;
   private Pilot coPilot;
@@ -31,37 +34,35 @@ public class Flight {
 
 
   //Konstruktor
-  public Flight(LocalDate date, String flightNum, Airport [] origin, Airport [] destination, Airline organizer, Passenger [] passenger, Pilot captain, Pilot coPilot, Pilot flightEngineer, Plane vehicle){
+  public Flight(LocalDate date, String flightNum, Airport [] origin, Airport [] destination, Airline organizer, List<Passenger> passengers, Pilot captain, Pilot coPilot, Pilot flightEngineer, Plane vehicle){
     this.date = date;
     this.flightNum = flightNum;
     this.origin = origin;
     this.destination = destination;
     this.organizer = organizer;
-    this.passenger = new Passenger[853];
-    for (int i = 0; i < passenger.length; i++) {
-      this.passenger[i] = passenger[i];
-    }
+    this.passengers.addAll(passengers);
     this.captain = captain;
     this.coPilot = coPilot;
     this.flightEngineer = flightEngineer;
     this.vehicle = vehicle;
+
+    System.out.println(toString() + " created");
   }
 
   //METHODEN----------------------------------------------------------------
-
   //+refuel
   public void refuel(){
-    System.out.println("Flugzeug wurde getankt.");
+    System.out.println(toString() + " wurde betankt.");
   }
 
   //+takeOff
   public void takeOff(){
-    System.out.println("Flugzeug ist abgehoben");
+    System.out.println(toString() + " ist abgehoben");
   }
 
   //+land
   public void land(){
-    System.out.println("Flugzeug ist gelandet.");
+    System.out.println(toString() + " ist gelandet.");
   }
 
   //+delay
@@ -72,18 +73,44 @@ public class Flight {
 
   //+cancel
   public void cancel(){
-    System.out.println("Flug " + flightNum + " wurde storniert.");
+    System.out.println("Der Flug " + toString() + flightNum + " wurde storniert.");
   }
 
-  public void addPassenger(Passenger... passengers) {
-    for (Passenger passenger : passengers) {
-      if (passengerCounter < this.passenger.length) {
-        this.passenger[passengerCounter] = passenger;
-        passengerCounter++;
-      } else {
-        System.out.println("Der Flug ist ausgebucht, es können keine weiteren Passagiere hinzugefügt werden.");
-      }
+  public void addPassenger(Passenger passenger) {
+    if (passengers.size() < MAX_PASSENGERS) {
+      passengers.add(passenger);
+      System.out.println(toString() + " wurde zum Passagier " + passenger.getName());
+    } else {
+      System.out.println("Der Flug ist ausgebucht, es können keine weiteren Passagiere hinzugefügt werden.");
     }
+  }
+
+  public void assignCaptain(Pilot captain) {
+    this.captain = captain;
+    System.out.println(toString() + " wurde zum Kapitän " + captain.getName());
+  }
+
+  public void assignCoPilot(Pilot coPilot) {
+    this.coPilot = coPilot;
+    System.out.println(toString() + " wurde zum Co-Pilot " + coPilot.getName());
+  }
+
+  public void assignFlightEngineer(Pilot flightEngineer) {
+    this.flightEngineer = flightEngineer;
+    System.out.println(toString() + " wurde zum Flugingenieur" + flightEngineer.getName());
+  }
+
+  public void assignAirline(Airline airline) {
+    this.organizer = airline;
+    System.out.println(toString() + " wurde zur Airline " + airline.getName());
+  }
+
+  public void startFlight() {
+    System.out.println(toString() + " hat den Flug erfolgreich gestartet.");
+  }
+
+  public void finishFlight() {
+    System.out.println(toString() + " hat den Flug erfolgreich beendet.");
   }
 
 
@@ -109,8 +136,8 @@ public class Flight {
     return organizer;
   }
 
-  public Passenger[] getPassenger(){
-    return passenger;
+  public List<Passenger> getPassengers(){
+    return passengers;
   }
 
   public Pilot getCaptain(){
@@ -151,8 +178,8 @@ public class Flight {
     this.organizer = organizer;
   }
 
-  public void setPassenger(Passenger[] passenger){
-    this.passenger = passenger;
+  public void setPassenger(List<Passenger> passengers){
+    this.passengers = passengers;
   }
 
   public void setCaptain(Pilot captain){

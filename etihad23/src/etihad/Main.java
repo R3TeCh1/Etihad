@@ -1,6 +1,8 @@
 package etihad;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
   private Flight flight;
@@ -17,12 +19,21 @@ public class Main {
     Airport[] origin = new Airport[4];
     Airport[] destination = new Airport[4];
     Airline organizer = new Airline();
-    Passenger[] passengers = new Passenger[853];
+
+    List<Passenger> passengers = new ArrayList<>();
+    for (int i = 0; i < 853; i++) {
+      passengers.add(new Passenger("Passenger " + (i + 1)));
+    }
+
     captain = new Pilot("The Captain");
     coPilot = new Pilot("The Co Pilot");
     flightEngineer = new Pilot("The Flight Engineer");
     Pilot[] pilots = new Pilot[]{captain,coPilot,flightEngineer};
     Plane vehicle = new Plane();
     flight = new Flight(date, "LH400", origin, destination, organizer, passengers, captain, coPilot, flightEngineer, vehicle);
+
+    //Ausgabe
+    System.out.println("Flight " + flight.getFlightNum() + " is created with " + passengers.size() + " passengers.");
+
   }
 }
