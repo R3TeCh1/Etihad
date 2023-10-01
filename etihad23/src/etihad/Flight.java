@@ -126,6 +126,7 @@ public class Flight {
    */
   public void assignCaptain(Pilot captain) {
     this.captain = captain;
+    captain.book(this); // Hier wird der Flug dem Kapitän zugewiesen
     System.out.println(toString() + " wurde zum Kapitän " + captain.getName());
   }
 
@@ -136,6 +137,7 @@ public class Flight {
    */
   public void assignCoPilot(Pilot coPilot) {
     this.coPilot = coPilot;
+    coPilot.book(this); // Hier wird der Flug dem Co-Piloten zugewiesen
     System.out.println(toString() + " wurde zum Co-Pilot " + coPilot.getName());
   }
 
@@ -146,7 +148,8 @@ public class Flight {
    */
   public void assignFlightEngineer(Pilot flightEngineer) {
     this.flightEngineer = flightEngineer;
-    System.out.println(toString() + " wurde zum Flugingenieur" + flightEngineer.getName());
+    flightEngineer.book(this); // Hier wird der Flug dem Flugingenieur zugewiesen
+    System.out.println(toString() + " wurde zum Flugingenieur " + flightEngineer.getName());
   }
 
   /**
