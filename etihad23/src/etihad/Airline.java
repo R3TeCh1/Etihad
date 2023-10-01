@@ -1,6 +1,6 @@
 package etihad;
 /**
- * @author Nazanin
+ * @author
  * @version 30.09.2023
  */
 public class Airline {
