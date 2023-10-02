@@ -10,6 +10,13 @@ public class Seat {
     boolean reservation;
     final Plane plane;
 
+    public Seat(int row, char place, Plane plane) {
+        this.row = row;
+        this.place = place;
+        this.plane = plane;
+        System.out.println(toString() + " created");
+    }
+
     public int getRow() {
         return row;
     }
@@ -24,13 +31,6 @@ public class Seat {
 
     public Plane getPlane() {
         return plane;
-    }
-
-    public Seat(int row, char place, Plane plane) {
-        this.row = row;
-        this.place = place;
-        this.plane = plane;
-        System.out.println(toString() + " created");
     }
 
     public void reserve() {

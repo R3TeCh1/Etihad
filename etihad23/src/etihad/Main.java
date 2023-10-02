@@ -30,11 +30,15 @@ public class Main {
     coPilot = new Pilot("The Co Pilot");
     flightEngineer = new Pilot("The Flight Engineer");
     Pilot[] pilots = new Pilot[]{captain,coPilot,flightEngineer};
-    Plane vehicle = new Plane("Airbus a320", "323432432", 221, "D-3242");
+    Plane vehicle = new Plane("Airbus a320", "323432432", "D-3242");
+    vehicle.addSeat(23, 'F');
+
     flight = new Flight(date, "LH400", origin, destination, organizer, passengers, captain, coPilot, flightEngineer, vehicle);
 
     //Ausgabe
     System.out.println("Flight " + flight.getFlightNum() + " is created with " + passengers.size() + " passengers.");
     flight.cancel();
+    vehicle.takeOff();
+    vehicle.takeOff();
   }
 }

@@ -1,7 +1,9 @@
 package etihad;
 
+import java.util.Collections;
 import java.util.Objects;
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * @author David Rischow
@@ -14,12 +16,14 @@ public class Plane {
     String tailNr;
     Airline airline;
     String status = "onLand";
-    List<Seat> seats;
+    List<Seat> seats = new ArrayList<>();
 
     public Plane(String model, String serialNum, String tailNr) {
         this.model = model;
         this.serialNum = serialNum;
         this.tailNr = tailNr;
+        this.addSeat(23, 'B');
+        System.out.println(toString() + " created");
     }
 
     public void rent(Airline airLine) {
@@ -58,14 +62,24 @@ public class Plane {
     };
 
     public void addSeat(int row, char place) {
+        if (!seats.isEmpty()){
         for (Seat existingSeat : seats) {
             if (existingSeat.getRow() == row && existingSeat.getPlace() == place) {
-                System.out.println(toString() + ": Seat already exist");
+                System.out.println(toString() + ": seat already exist");
                 return;
             }
-        }
+        }}
         seats.add(new Seat(row, place, this));
-        System.out.println(toString() + ": Seat added");
+        System.out.println(toString() + ": seat added");
+    }
+
+    public void getSeat(int row, char place) {
+        for (Seat seat : seats) {
+            if (seat.getRow() == row && seat.getPlace() == place) {
+                System.out.println(toString() + ", " + seat.toString());
+            }
+        }
+        System.out.println(toString() + ": seat not found");
     }
 
     public String getModel() {
@@ -107,7 +121,4 @@ public class Plane {
     public String toString() {
         return getClass().getSimpleName() +", "+ this.tailNr;
     }
-
-
-
 }
