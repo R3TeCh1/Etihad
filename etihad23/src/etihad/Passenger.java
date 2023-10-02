@@ -48,6 +48,6 @@ public class Passenger {
   //TOSTRING--------------------------------------------------------
   @Override
   public String toString(){
-    return getClass().getSimpleName() + " " + name + " " + seat;
+    return getClass().getSimpleName() + " " + name + " | " + seat.toString();
   }
 }
