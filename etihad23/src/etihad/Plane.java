@@ -14,7 +14,8 @@ public class Plane {
     String serialNum;
     int hoursFlown;
     String tailNr;
-    Airline airline;
+    Airline rentAirline;
+    Airline reserveAirline
     String status = "onLand";
     List<Seat> seats = new ArrayList<>();
 
@@ -33,13 +34,14 @@ public class Plane {
 
     //Airlines können mit "rent" das Flugzeug mieten.
     public void rent(Airline airLine) {
-        if (airline == null) {
-            this.airline = airLine;
+            this.rentAirline = airLine;
             System.out.println(toString() + " is rent by " + airLine.getName());
-        } else {
-            System.out.println(toString() + " is already rent by " + airline.getName());
-        }
     }
+
+    public void reserve(Airline airLine) {
+        this.reserveAirline = airLine;
+        System.out.println(toString() + " is rent by " + airLine.getName());
+    };
 
     public void clean() {
         System.out.println(toString() + " cleaned");
