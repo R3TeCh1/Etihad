@@ -49,6 +49,10 @@ public class Plane {
         System.out.println(toString() + " refueled");
     };
 
+    public void deice() {
+        System.out.println(toString() + " deiced");
+    };
+
     public void takeOff() {
         if(Objects.equals(status, "onLand")) {
             this.status = "inAir";
