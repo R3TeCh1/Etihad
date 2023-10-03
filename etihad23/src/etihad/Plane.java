@@ -18,6 +18,11 @@ public class Plane {
     String status = "onLand";
     List<Seat> seats = new ArrayList<>();
 
+    /**
+     * @param model: String, Flugzeugmodell
+     * @param serialNum: String, Serialnummer des FLugzeugs
+     * @param tailNr: String, Flugzeugbezeichnung
+     */
     public Plane(String model, String serialNum, String tailNr) {
         this.model = model;
         this.serialNum = serialNum;
@@ -26,6 +31,7 @@ public class Plane {
         System.out.println(toString() + " created");
     }
 
+    //Airlines können mit "rent" das Flugzeug mieten.
     public void rent(Airline airLine) {
         if (airline == null) {
             this.airline = airLine;
@@ -65,7 +71,7 @@ public class Plane {
         if (!seats.isEmpty()){
         for (Seat existingSeat : seats) {
             if (existingSeat.getRow() == row && existingSeat.getPlace() == place) {
-                System.out.println(toString() + ": seat already exist");
+                System.out.println(toString() + ": "+ row + place +" already exist");
                 return;
             }
         }}
@@ -77,6 +83,7 @@ public class Plane {
         for (Seat seat : seats) {
             if (seat.getRow() == row && seat.getPlace() == place) {
                 System.out.println(toString() + ", " + seat.toString());
+                return;
             }
         }
         System.out.println(toString() + ": seat not found");

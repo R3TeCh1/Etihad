@@ -32,7 +32,6 @@ public class Main {
     Pilot[] pilots = new Pilot[]{captain,coPilot,flightEngineer};
     Plane vehicle = new Plane("Airbus a320", "323432432", "D-3242");
     vehicle.addSeat(23, 'F');
-
     flight = new Flight(date, "LH400", origin, destination, organizer, passengers, captain, coPilot, flightEngineer, vehicle);
 
     //Ausgabe

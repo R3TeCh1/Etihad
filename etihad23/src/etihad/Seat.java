@@ -10,6 +10,12 @@ public class Seat {
     boolean reservation;
     final Plane plane;
 
+    /**
+     *
+     * @param row: int, Reihe
+     * @param place: char, Genauer Platz in der Reihe
+     * @param plane: Plane, das Flugzeug, in welchem Sitz verbaut ist.
+     */
     public Seat(int row, char place, Plane plane) {
         this.row = row;
         this.place = place;
