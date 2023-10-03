@@ -40,7 +40,7 @@ public class Plane {
 
     public void reserve(Airline airLine) {
         this.reserveAirline = airLine;
-        System.out.println(toString() + " is rent by " + airLine.getName());
+        System.out.println(toString() + " is reserved by " + airLine.getName());
     };
 
     public void clean() {
