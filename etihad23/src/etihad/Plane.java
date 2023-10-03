@@ -15,7 +15,7 @@ public class Plane {
     int hoursFlown;
     String tailNr;
     Airline rentAirline;
-    Airline reserveAirline
+    Airline reserveAirline;
     String status = "onLand";
     List<Seat> seats = new ArrayList<>();
 
@@ -111,8 +111,12 @@ public class Plane {
         return tailNr;
     }
 
-    public Airline getAirline() {
-        return airline;
+    public Airline getreserveAirline() {
+        return reserveAirline;
+    }
+
+    public Airline getrentAirline() {
+        return rentAirline;
     }
 
     public String getStatus() {
@@ -127,9 +131,6 @@ public class Plane {
         this.hoursFlown = hoursFlown;
     }
 
-    public void setAirline(Airline airline) {
-        this.airline = airline;
-    }
 
     public String toString() {
         return getClass().getSimpleName() +", "+ this.tailNr;
