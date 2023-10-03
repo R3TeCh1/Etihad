@@ -12,6 +12,7 @@ public class Passenger {
   private Seat seat;
   private Set<Flight> flights = new HashSet<Flight>();
 
+  public void addFlight(Flight f){ flights.add(f); }
 
   //Konstruktor--------------------------------------------------------
   public Passenger(String name){
@@ -47,6 +48,6 @@ public class Passenger {
   //TOSTRING--------------------------------------------------------
   @Override
   public String toString(){
-    return getClass().getSimpleName() + " " + name + " " + seat;
+    return getClass().getSimpleName() + " " + name + " | " + seat.toString();
   }
 }
