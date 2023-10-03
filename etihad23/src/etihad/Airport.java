@@ -1,6 +1,5 @@
 package etihad;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,17 +13,17 @@ public class Airport {
   private String name;
   private String iataCode;
   private City[] catchmentArea;
-  Set<Flight> aSetOfdepartures = new HashSet<>();
-  Set<Flight> aSetOfarrivals = new HashSet<>();
+  Set<Flight> departures = new HashSet<>();
+  Set<Flight> arrivals = new HashSet<>();
 
 
   //constructor
-  public Airport(String name, String iataCode, City[] catchmentArea, Set<Flight> aSetOfdepartures, Set<Flight> aSetOfarrivals) {
+  public Airport(String name, String iataCode, City[] catchmentArea, Set<Flight> departures, Set<Flight> arrivals) {
     this.name = name;
     this.iataCode = iataCode;
     this.catchmentArea = catchmentArea;
-    this.aSetOfdepartures = aSetOfdepartures;
-    this.aSetOfarrivals = aSetOfarrivals;
+    this.departures = departures;
+    this.arrivals = arrivals;
     System.out.println(toString() + " created");
   }
 
@@ -43,11 +42,11 @@ public class Airport {
   }
 
   public Set<Flight> getASetOfdepartures() {
-    return aSetOfdepartures;
+    return departures;
   }
 
-  public Set<Flight> getaSetOfarrivals() {
-    return aSetOfarrivals;
+  public Set<Flight> getArrivals() {
+    return arrivals;
   }
 
   public City[] getCatchmentArea() {
@@ -66,11 +65,11 @@ public class Airport {
 
 
   public void setASetOfdepartures(Set<Flight> aSetOfdepartures) {
-    this.aSetOfdepartures = aSetOfdepartures;
+    this.departures = aSetOfdepartures;
   }
 
   public void setASetOfarrivals(Set<Flight> aSetOfarrivals) {
-    this.aSetOfarrivals = aSetOfarrivals;
+    this.arrivals = aSetOfarrivals;
   }
 
   // Setter für Verknüpfung mit City
@@ -81,18 +80,18 @@ public class Airport {
 
   // Methode zum Hinzufügen eines Flugs zu den Abflügen
   public void addDepartureFlight(Flight flight) {
-    aSetOfdepartures.add(flight);
+    departures.add(flight);
     System.out.println("Flight " + flight.getFlightNum() + " is departing from Airport " + name);
   }
 
   // Methode zum Hinzufügen eines Flugs zu den Ankünften
   public void addArrivalFlight(Flight flight) {
-    aSetOfarrivals.add(flight);
+    arrivals.add(flight);
     System.out.println("Flight " + flight.getFlightNum() + " is arriving at Airport " + name);
   }
 
 
-//toString
+  //toString
   @Override
   public String toString() {
     return getClass().getSimpleName() + "[name=" + name + ", iataCode=" + iataCode + "]";

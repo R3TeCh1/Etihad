@@ -1,60 +1,51 @@
 package etihad;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 /**
  * @author Nazanin
  * @version 30.09.2023
  */
 
-import java.util.HashSet;
-import java.util.Set;
-
-
 public class City {
   private String name;
-  private Airport[] infrastructure;
-  private Set<Airport> airports = new HashSet<>();
+  private Set<Airport> infrastructure = new HashSet<>();
 
-
-
-//constructor
+  //constructor
   public City(String name){
     this.name= name;
-    System.out.println("City " + name + " created");
+    System.out.println(toString() + " created");
   }
 
-  //getter
-
+  //Getter
   public String getName(){
     return name;
   }
 
-  public Airport[] getInfrastructure() {
+  public Set<Airport> getInfrastructure() {
     return infrastructure;
   }
-
 
   //Setter
   public void setName(String name){
     this.name= name;
   }
 
-  public Set<Airport> getAirports() {
-    return airports;
-  }
-
-  public void setAirports(Set<Airport> airports) {
-    this.airports = airports;
-  }
-
-
   // Setter für Verknüpfung mit Airport
-  public void setInfrastructure(Airport[] infrastructure) {
+  public void setInfrastructure(Set<Airport> infrastructure) {
     this.infrastructure = infrastructure;
-    System.out.println("City " + name + " is linked to Airport " + infrastructure[0].getName());
+    Iterator<Airport> iterator = infrastructure.iterator();
+    if (iterator.hasNext()) {
+      Airport firstAirport = iterator.next();
+      System.out.println("City " + name + " is linked to Airport " + firstAirport.getName());
+    }
   }
 
   // add methode
   public void addAirport(Airport airport) {
-    airports.add(airport);
+    infrastructure.add(airport);
     System.out.println("Airport " + airport.getName() + " is linked to City " + name);
   }
 

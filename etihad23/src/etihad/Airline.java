@@ -25,6 +25,7 @@ public class Airline {
         this.iataCode = iataCode;
         employee = new ArrayList<Pilot>();
         flights = new ArrayList<Flight>();
+        System.out.println(toString() + " created");
     }
 
     // Standardkonstruktor
@@ -34,6 +35,7 @@ public class Airline {
     public Airline() {
         employee = new ArrayList<Pilot>();
         flights = new ArrayList<Flight>();
+        System.out.println(toString() + " created");
     }
 
     //GETTER-----------------------------------------------------------------
