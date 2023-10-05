@@ -28,6 +28,10 @@ public class City {
     return infrastructure;
   }
 
+  public void addInfrastructure(Airport infrastructure) {
+    this.infrastructure.add(infrastructure);
+  }
+
   //Setter
   public void setName(String name){
     this.name= name;

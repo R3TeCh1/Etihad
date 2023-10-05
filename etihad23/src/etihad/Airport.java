@@ -27,6 +27,13 @@ public class Airport {
     System.out.println(toString() + " created");
   }
 
+  public Airport(String name, String iataCode, City catchmentArea){
+    this.name = name;
+    this.iataCode = iataCode;
+    this.catchmentArea = new City[1];
+    this.catchmentArea[0] = catchmentArea;
+  }
+
 
   //Methods----------------------------------------------------------------
   public void deice(){
