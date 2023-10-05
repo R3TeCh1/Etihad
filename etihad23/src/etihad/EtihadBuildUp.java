@@ -17,7 +17,6 @@ public class EtihadBuildUp {
   private Airport inAirport;
   private Airport outAirport;
 
-
   public static void main(String[] args) {
     EtihadBuildUp build = new EtihadBuildUp();
     build.buildCity();
