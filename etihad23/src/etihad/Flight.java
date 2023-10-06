@@ -111,6 +111,7 @@ public class Flight {
    * @param passenger Der hinzuzufügende Passagier.
    */
   public void addPassenger(Passenger passenger) {
+    if(vehicle.getSeats().contains(passenger.getSeat()))
     if (passengers.size() < MAX_PASSENGERS) {
       passengers.add(passenger);
       System.out.println(toString() + " wurde zum Passagier " + passenger.getName());
@@ -175,6 +176,19 @@ public class Flight {
   public void finishFlight() {
     System.out.println(toString() + " hat den Flug erfolgreich beendet.");
   }
+
+  public void show(){
+    String result = "";
+    result += "Flight " + flightNum + " on " + date.toString();
+    result += "\nOffered by " + organizer.show();
+    result += "\nFlown by " + captain.show() + " [and " + coPilot.show();
+    result += "\ndeparting " + origin[0].show();
+    result += "\ncarrying passengers ";
+    for(Passenger p : passengers){
+      result += p.show() + " on seat " + p.getSeat().show() + "\n";
+    }
+  }
+
 
 
   //GETTER----------------------------------------------------------------

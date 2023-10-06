@@ -12,7 +12,14 @@ public class Passenger {
   private Seat seat;
   private Set<Flight> flights = new HashSet<Flight>();
 
-  public void addFlight(Flight f){ flights.add(f); }
+  public void addFlight(Flight f){
+    if (flights.contains(f)) {
+      System.out.println("This Flight already exist");
+    }
+    else {
+      flights.add(f);
+    }
+  }
 
   //Konstruktor--------------------------------------------------------
   public Passenger(String name){
