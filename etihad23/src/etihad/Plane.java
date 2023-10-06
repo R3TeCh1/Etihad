@@ -131,8 +131,13 @@ public class Plane {
         this.hoursFlown = hoursFlown;
     }
 
-
     public String toString() {
         return getClass().getSimpleName() +", "+ this.tailNr;
     }
+
+    public String show() {
+        return toString();
+    }
 }
+
+

@@ -9,6 +9,8 @@ public class Seat {
     final char place;
     boolean reservation;
     final Plane plane;
+    Passenger passenger;
+
 
     /**
      *
@@ -50,14 +52,38 @@ public class Seat {
 
     public String getReservation(){
         if(reservation) {
-            return toString() + "is reserved";
+            return toString() + "is reserved by " + passenger.getName();
         } else {
             return toString() + "is not reserved";
         }
     }
 
+    public void getPassenger() {
+        System.out.println(toString() + " is reserved by " +this.passenger.getName());
+    }
+
+    public void setReservation(Passenger passenger) {
+        if (reservation) {
+            System.out.println(toString() + "Seat is already reserved");
+            return;
+        }
+        if (passenger == null) {
+            this.reservation = false;
+            this.passenger = null;
+            System.out.println(toString() + "Reservation cancelled.");
+        } else {
+            this.reservation = true;
+            this.passenger = passenger;
+        }
+
+    };
+
     public String toString() {
         return getClass().getSimpleName() +", "+ this.place + this.row + " in " + plane.tailNr;
+    }
+
+    public String show() {
+        return toString();
     }
 
 }
