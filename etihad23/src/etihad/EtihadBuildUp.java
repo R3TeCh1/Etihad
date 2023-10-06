@@ -49,17 +49,18 @@ public class EtihadBuildUp {
   }
 
   private void buildPlane() {
+    this.thePlane = new Plane("Airbus a320", "rf234323454332", "A6-BLF");
   }
 
   private void buildSeat() {
+    this.theSeatOne = new Seat(3, 'C', this.thePlane);
+    this.theSeatTwo = new Seat(3, 'D', this.thePlane);
+    this.thePlane.addSeat(theSeatOne);
+    this.thePlane.addSeat(theSeatTwo);
   }
 
   private void buildPassenger() {
   }
-
-
-
-
 
   private void buildFlight() {
   }

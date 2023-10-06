@@ -28,7 +28,7 @@ public class Plane {
         this.model = model;
         this.serialNum = serialNum;
         this.tailNr = tailNr;
-        this.addSeat(23, 'B');
+        this.addSeat(new Seat(23, 'A', this));
         System.out.println(toString() + " created");
     }
 
@@ -73,15 +73,15 @@ public class Plane {
         }
     };
 
-    public void addSeat(int row, char place) {
+    public void addSeat(Seat seat) {
         if (!seats.isEmpty()){
         for (Seat existingSeat : seats) {
-            if (existingSeat.getRow() == row && existingSeat.getPlace() == place) {
-                System.out.println(toString() + ": "+ row + place +" already exist");
+            if (existingSeat.getRow() == seat.getRow() && existingSeat.getPlace() == seat.getPlace()) {
+                System.out.println(toString() + ": "+ seat.getRow() + seat.getPlace() +" already exist");
                 return;
             }
         }}
-        seats.add(new Seat(row, place, this));
+        seats.add(seat);
         System.out.println(toString() + ": seat added");
     }
 
