@@ -97,6 +97,18 @@ public class Plane {
         System.out.println(toString() + ": seat added");
     }
 
+    public void addSeat(Seat s){
+        if (!seats.isEmpty()){
+            for (Seat existingSeat : seats) {
+                if (existingSeat.getRow() == s.getRow() && existingSeat.getPlace() == s.getPlace()) {
+                    System.out.println(toString() + ": "+ s.getRow() + s.getPlace() +" already exist");
+                    return;
+                }
+            }}
+        seats.add(s);
+        System.out.println(toString() + ": seat added");
+    }
+
     public void getSeat(int row, char place) {
         for (Seat seat : seats) {
             if (seat.getRow() == row && seat.getPlace() == place) {

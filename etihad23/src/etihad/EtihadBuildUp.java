@@ -11,7 +11,6 @@ public class EtihadBuildUp {
   private Passenger theSecondPassenger;
   private Seat theSeatOne;
   private Seat theSeatTwo;
-  private Seat theSeatThree;
   private City inCity;
   private City outCity;
   private Plane thePlane;
@@ -28,7 +27,6 @@ public class EtihadBuildUp {
     build.buildSeat();
     build.buildPassenger();
     build.buildFlight();
-    Flight.show();
   }
 
   private void buildCity() {
@@ -44,31 +42,19 @@ public class EtihadBuildUp {
   }
 
   private void buildAirline() {
-    theAirline = new Airline("Etihad Airways", "EY");
   }
 
   private void buildPilot() {
-    theCaptain = new Pilot("Mark Brierley");
-    theCoPilot = new Pilot("Jihad Matta");
-    theAirline.addEmployee(theCaptain);
-    theAirline.addEmployee(theCoPilot);
+
   }
 
   private void buildPlane() {
-    thePlane = new Plane("Boeing 787-9 Dreamliner", "8964BC", "A6-BLL");
   }
 
   private void buildSeat() {
-    this.theSeatOne = new Seat(3, 'C', this.thePlane);
-    this.theSeatTwo = new Seat(3, 'D', this.thePlane);
-    this.thePlane.addSeat(theSeatOne);
-    this.thePlane.addSeat(theSeatTwo);
-//    theFirstPassenger.setSeat(theSeatOne);
-//    theSecondPassenger.setSeat(theSeatTwo);
   }
 
   private void buildPassenger() {
-    theFirstPassenger = new Passenger("Oleksandr");
   }
 
 
@@ -76,11 +62,5 @@ public class EtihadBuildUp {
 
 
   private void buildFlight() {
-    theFirstPassenger.setSeat(new Seat);
-    theSecondPassenger.setSeat(new Seat());
-    outFlight.addPassenger(theFirstPassenger);
-    outFlight.assignCaptain(theCaptain);
-    theFirstPassenger.setSeat();
-    inFlight.addPassenger(theFirstPassenger);
   }
 }
