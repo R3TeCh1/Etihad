@@ -136,7 +136,7 @@ public class Plane {
     }
 
     public String show() {
-        return toString();
+        return this.getTailNr() + ", " + this.getModel();
     }
 }
 

@@ -78,8 +78,6 @@ public class Seat {
 
     };
 
-
-
     public String toString() {
         return getClass().getSimpleName() +", "+ this.place + this.row + " in " + plane.getTailNr();
     }
