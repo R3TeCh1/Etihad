@@ -5,11 +5,11 @@ package etihad;
  */
 public class Seat {
 
-    final int row;
-    final char place;
-    boolean reservation;
-    final Plane plane;
-    Passenger passenger;
+    private final int row;
+    private final char place;
+    private boolean reservation;
+    private final Plane plane;
+    private Passenger passenger;
 
 
     /**
@@ -78,8 +78,10 @@ public class Seat {
 
     };
 
+
+
     public String toString() {
-        return getClass().getSimpleName() +", "+ this.place + this.row + " in " + plane.tailNr;
+        return getClass().getSimpleName() +", "+ this.place + this.row + " in " + plane.getTailNr();
     }
 
     public String show() {

@@ -10,14 +10,14 @@ import java.util.ArrayList;
  * @version 30.09.2023
  */
 public class Plane {
-    String model;
-    String serialNum;
-    int hoursFlown;
-    String tailNr;
-    Airline rentAirline;
-    Airline reserveAirline;
-    String status = "onLand";
-    List<Seat> seats = new ArrayList<>();
+    private final String model;
+    private final String serialNum;
+    private int hoursFlown;
+    private String tailNr;
+    private Airline rentAirline;
+    private Airline reserveAirline;
+    private String status = "onLand";
+    private List<Seat> seats = new ArrayList<>();
 
     /**
      * @param model: String, Flugzeugmodell
