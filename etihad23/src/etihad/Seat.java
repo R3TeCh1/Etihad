@@ -20,6 +20,7 @@ public class Seat {
         this.row = row;
         this.place = place;
         this.plane = plane;
+//        this.plane.addSeat(row, place);
         System.out.println(toString() + " created");
     }
 
