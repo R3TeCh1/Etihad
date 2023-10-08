@@ -45,6 +45,12 @@ public class Passenger {
     this.flights = flights;
   }
 
+  //SHOW--------------------------------------------------------
+
+  public void show(){
+    System.out.print("" + this.name + " on seat ");
+    this.seat.show();
+  }
   //TOSTRING--------------------------------------------------------
   @Override
   public String toString(){

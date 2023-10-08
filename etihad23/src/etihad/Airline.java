@@ -149,6 +149,10 @@ public class Airline {
         employee.remove(p);
     }
 
+    public void show(){
+        System.out.println("" + this.name + " (" + this.iataCode + ")");
+    }
+
     //TOSTRING-----------------------------------------------------
     @Override
     public String toString() {
