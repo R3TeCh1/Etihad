@@ -30,26 +30,30 @@ public class EtihadBuildUp {
   }
 
   private void buildCity() {
-    outCity = new City("Berlin");
+    outCity = new City("Abu Dhabi");
     inCity = new City("New York");
   }
 
   private void buildAirport() {
-    outAirport = new Airport("Berlin Brandenburg Airport", "BER", outCity);
+    outAirport = new Airport("Abu Dhabi International Airport", "AUH", outCity);
     inAirport = new Airport("Joh F. Kennedy International Airport", "JFK", inCity);
     outCity.addInfrastructure(outAirport);
     inCity.addInfrastructure(inAirport);
   }
 
   private void buildAirline() {
+    theAirline = new Airline("Etihad Airways", "EY");
   }
 
   private void buildPilot() {
-
+    theCaptain = new Pilot("Mark Brierley");
+    theCoPilot = new Pilot("Jihad Matta");
+    theAirline.addEmployee(theCaptain);
+    theAirline.addEmployee(theCoPilot);
   }
 
   private void buildPlane() {
-    this.thePlane = new Plane("Airbus a320", "rf234323454332", "A6-BLF");
+    thePlane = new Plane("Boeing 787-9 Dreamliner", "8964BC", "A6-BLL");
   }
 
   private void buildSeat() {
