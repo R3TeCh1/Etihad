@@ -135,8 +135,8 @@ public class Plane {
         return getClass().getSimpleName() +", "+ this.tailNr;
     }
 
-    public String show() {
-        return this.getTailNr() + ", " + this.getModel();
+    public void show() {
+        System.out.println("using " +this.getTailNr() + " (" + this.getModel() + ") ");
     }
 }
 

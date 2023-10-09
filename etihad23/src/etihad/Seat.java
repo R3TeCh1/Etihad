@@ -82,8 +82,8 @@ public class Seat {
         return getClass().getSimpleName() +", "+ this.place + this.row + " in " + plane.getTailNr();
     }
 
-    public String show() {
-        return toString();
+    public void show() {
+        System.out.println(toString() + " reserved by " + this.passenger.getName());
     }
 
 }
