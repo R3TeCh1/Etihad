@@ -263,13 +263,26 @@ public class Flight {
 
   //SHOW----------------------------------------------------------------
   public void show(){
-    System.out.println(toString() + " " + " on " + date);
-    System.out.println("Offered by " + organizer);
-    System.out.println("Flown by " + captain + " [and Co" + coPilot + "]");
-    System.out.println("Departing");
-    System.out.println("Arriving");
-    System.out.println("Using");
-    System.out.println("Carrying Passenger(s): ");
+    System.out.println(toString() + " " + "on " + date);
+    System.out.print("Offered by ");
+    organizer.show();
+    System.out.print("Flown by ");
+        captain.show(true);
+    System.out.print(" [and ");
+      coPilot.show(false);
+    System.out.print("]\n");
+    origin.show(true);
+    destination.show(false);
+    vehicle.show();
+    System.out.print("Carrying Passenger(s): ");
+    List<Passenger> nPassenger = new ArrayList<>();
+    for (Passenger passenger : passengers) {
+      if (passenger != null) {
+        nPassenger.add(passenger);
+      }
+    }
+    nPassenger.forEach(Passenger::show);
+    System.out.println();
   }
 
 

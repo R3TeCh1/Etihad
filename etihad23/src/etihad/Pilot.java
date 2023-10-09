@@ -117,6 +117,11 @@ public class Pilot {
     this.tasks = tasks;
   }
 
+  public void show(boolean isCaptain) {
+    String c = isCaptain ? "Captain " : "CoPilot ";
+    System.out.print(c + this.name);
+  }
+
   //TOSTRING--------------------------------------------------------
 
   /**

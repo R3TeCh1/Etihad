@@ -85,5 +85,4 @@ public class Seat {
     public void show() {
         System.out.println(toString() + " reserved by " + this.passenger.getName());
     }
-
 }

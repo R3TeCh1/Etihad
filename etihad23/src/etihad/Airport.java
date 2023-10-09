@@ -98,8 +98,9 @@ public class Airport {
   }
 
   public void show(boolean isDeparture) {
-    String n = isDeparture? "Departing" : "Arriving";
-    System.out.println(n + name + "near ");
+    String n = isDeparture? "Departing " : "Arriving ";
+    System.out.print(n + name);
+    catchmentArea[0].show();
   }
 
   //toString

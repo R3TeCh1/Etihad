@@ -48,7 +48,7 @@ public class EtihadBuildUp {
 
   private void buildAirport() {
     outAirport = new Airport("Abu Dhabi International Airport", "AUH", outCity);
-    inAirport = new Airport("Joh F. Kennedy International Airport", "JFK", inCity);
+    inAirport = new Airport("John F. Kennedy International Airport", "JFK", inCity);
     outCity.addInfrastructure(outAirport);
     inCity.addInfrastructure(inAirport);
   }
@@ -76,8 +76,8 @@ public class EtihadBuildUp {
   }
 
   private void buildPassenger() {
-    theFirstPassenger = new Passenger("PASS ONE");
-    theSecondPassenger = new Passenger("PASS TWO");
+    theFirstPassenger = new Passenger("Max Mustermann");
+    theSecondPassenger = new Passenger("Sarah Mustermann");
   }
 
   private void buildFlight() {

@@ -54,7 +54,7 @@ public class City {
   }
 //show methode
   public void show(){
-    System.out.println("" + this.name);
+    System.out.println(" near " + this.name);
   }
   // toString
   @Override
