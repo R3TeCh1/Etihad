@@ -38,7 +38,8 @@ public class Passenger {
   }
 
   public void setSeat(Seat seat){
-    this.seat = seat;
+
+    this.seat = new Seat(seat);
   }
 
   public void setFlights(Set<Flight> flights){

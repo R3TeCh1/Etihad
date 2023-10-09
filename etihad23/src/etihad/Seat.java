@@ -25,6 +25,13 @@ public class Seat {
         System.out.println(toString() + " created");
     }
 
+    public Seat(Seat s){
+        this.row = s.getRow();
+        this.place = s.getPlace();
+        this.plane = s.getPlane();
+        this.passenger = s.getPassenger();
+        this.reservation = s.getReservation();
+    }
     public int getRow() {
         return row;
     }
