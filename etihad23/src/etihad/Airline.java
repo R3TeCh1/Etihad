@@ -156,8 +156,6 @@ public class Airline {
     //TOSTRING-----------------------------------------------------
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " : " +
-                "name='" + name + '\'' +
-                ", iataCode='" + iataCode;
+        return getClass().getSimpleName() + " " + name + " (" + iataCode + ")";
     }
 }
