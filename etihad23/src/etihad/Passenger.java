@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author Kadir Erzurum
+ * @author Alex
  * @version 30.09.2023
  */
 public class Passenger {
