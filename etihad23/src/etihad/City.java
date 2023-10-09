@@ -52,7 +52,10 @@ public class City {
     infrastructure.add(airport);
     System.out.println("Airport " + airport.getName() + " is linked to City " + name);
   }
-
+//show methode
+  public void show(){
+    System.out.println("" + this.name);
+  }
   // toString
   @Override
   public String toString() {

@@ -20,8 +20,8 @@ public class Flight {
   //-flightNum
   private String flightNum;
   //Airport
-  private Airport[] origin;
-  private Airport[] destination;
+  private Airport origin;
+  private Airport destination;
   //Airline
   private Airline organizer;
   //Passenger
@@ -47,10 +47,10 @@ public class Flight {
    * @param passengers Die Liste der Passagiere.
    * @param captain Der Kapitän des Fluges.
    * @param coPilot Der Co-Pilot des Fluges.
-   * @param flightEngineer Der Flugingenieur des Fluges.
+   * //@param flightEngineer Der Flugingenieur des Fluges.
    * @param vehicle Das Flugzeug, das für den Flug verwendet wird.
    */
-  public Flight(LocalDate date, String flightNum, Airport [] origin, Airport [] destination, Airline organizer, List<Passenger> passengers, Pilot captain, Pilot coPilot, Pilot flightEngineer, Plane vehicle){
+  public Flight(LocalDate date, String flightNum, Airport origin, Airport destination, Airline organizer, List<Passenger> passengers, Pilot captain, Pilot coPilot, Plane vehicle){
     this.date = date;
     this.flightNum = flightNum;
     this.origin = origin;
@@ -59,7 +59,7 @@ public class Flight {
     this.passengers.addAll(passengers);
     this.captain = captain;
     this.coPilot = coPilot;
-    this.flightEngineer = flightEngineer;
+    //this.flightEngineer = flightEngineer;
     this.vehicle = vehicle;
 
     System.out.println(toString() + " created");
@@ -187,11 +187,11 @@ public class Flight {
     return flightNum;
   }
 
-  public Airport[] getOrigin(){
+  public Airport getOrigin(){
     return origin;
   }
 
-  public Airport[] getDestination(){
+  public Airport getDestination(){
     return destination;
   }
 
@@ -229,11 +229,11 @@ public class Flight {
     this.flightNum = flightNum;
   }
 
-  public void setOrigin(Airport[] origin){
+  public void setOrigin(Airport origin){
     this.origin = origin;
   }
 
-  public void setDestination(Airport[] destination){
+  public void setDestination(Airport destination){
     this.destination = destination;
   }
 
@@ -260,6 +260,18 @@ public class Flight {
   public void setVehicle(Plane vehicle){
     this.vehicle = vehicle;
   }
+
+  //SHOW----------------------------------------------------------------
+  public void show(){
+    System.out.println(toString() + " " + " on " + date);
+    System.out.println("Offered by " + organizer);
+    System.out.println("Flown by " + captain + " [and Co" + coPilot + "]");
+    System.out.println("Departing");
+    System.out.println("Arriving");
+    System.out.println("Using");
+    System.out.println("Carrying Passenger(s): ");
+  }
+
 
   //TOSTRING--------------------------------------------------------
   /**

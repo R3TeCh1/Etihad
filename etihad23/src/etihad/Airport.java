@@ -97,6 +97,10 @@ public class Airport {
     System.out.println("Flight " + flight.getFlightNum() + " is arriving at Airport " + name);
   }
 
+  public void show(boolean isDeparture) {
+    String n = isDeparture? "Departing" : "Arriving";
+    System.out.println(n + name + "near ");
+  }
 
   //toString
   @Override

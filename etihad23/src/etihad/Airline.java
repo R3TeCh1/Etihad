@@ -149,11 +149,13 @@ public class Airline {
         employee.remove(p);
     }
 
+    public void show(){
+        System.out.println("" + this.name + " (" + this.iataCode + ")");
+    }
+
     //TOSTRING-----------------------------------------------------
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " : " +
-                "name='" + name + '\'' +
-                ", iataCode='" + iataCode;
+        return getClass().getSimpleName() + " " + name + " (" + iataCode + ")";
     }
 }

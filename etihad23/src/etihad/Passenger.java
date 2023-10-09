@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author Kadir Erzurum
+ * @author Alex
  * @version 30.09.2023
  */
 public class Passenger {
@@ -45,6 +45,12 @@ public class Passenger {
     this.flights = flights;
   }
 
+  //SHOW--------------------------------------------------------
+
+  public void show(){
+    System.out.print("" + this.name + " on seat ");
+    this.seat.show();
+  }
   //TOSTRING--------------------------------------------------------
   @Override
   public String toString(){
