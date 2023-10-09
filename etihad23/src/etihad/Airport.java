@@ -96,12 +96,10 @@ public class Airport {
     arrivals.add(flight);
     System.out.println("Flight " + flight.getFlightNum() + " is arriving at Airport " + name);
   }
-//show methode
-// departing Boryspil (KBP) near Kyiv
-//arriving Gatwick Airport (GTW) near London
+
   public void show(boolean isDeparture) {
     String n = isDeparture? "Departing" : "Arriving";
-    System.out.println(n + name + "near" + this.getCatchmentArea()[0]);
+    System.out.println(n + name + "near ");
   }
 
   //toString
