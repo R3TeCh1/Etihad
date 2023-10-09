@@ -15,8 +15,9 @@ public class Passenger {
   public void addFlight(Flight f){ flights.add(f); }
 
   //Konstruktor--------------------------------------------------------
-  public Passenger(String name){
+  public Passenger(String name, Seat seat){
     this.name = name;
+    this.seat = seat;
   }
 
   //Getter--------------------------------------------------------
@@ -39,7 +40,7 @@ public class Passenger {
 
   public void setSeat(Seat seat){
 
-    this.seat = new Seat(seat);
+    this.seat = seat;
   }
 
   public void setFlights(Set<Flight> flights){
@@ -49,7 +50,7 @@ public class Passenger {
   //SHOW--------------------------------------------------------
 
   public void show(){
-    System.out.print("" + this.name + " on seat ");
+    System.out.print("" + this.name + " on ");
     this.seat.show();
   }
   //TOSTRING--------------------------------------------------------

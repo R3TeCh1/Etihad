@@ -274,7 +274,7 @@ public class Flight {
     origin.show(true);
     destination.show(false);
     vehicle.show();
-    System.out.print("Carrying Passenger(s): ");
+    System.out.println("Carrying Passenger(s): ");
     List<Passenger> nPassenger = new ArrayList<>();
     for (Passenger passenger : passengers) {
       if (passenger != null) {
@@ -282,9 +282,7 @@ public class Flight {
       }
     }
     nPassenger.forEach(Passenger::show);
-    System.out.println();
   }
-
 
   //TOSTRING--------------------------------------------------------
   /**

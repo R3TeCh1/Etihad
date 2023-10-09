@@ -29,8 +29,8 @@ public class Seat {
         this.row = s.getRow();
         this.place = s.getPlace();
         this.plane = s.getPlane();
-        this.passenger = s.getPassenger();
-        this.reservation = s.getReservation();
+        //this.passenger = s.getPassenger();
+        //this.reservation = s.getReservation();
     }
     public int getRow() {
         return row;
@@ -86,10 +86,10 @@ public class Seat {
     };
 
     public String toString() {
-        return getClass().getSimpleName() +", "+ this.place + this.row + " in " + plane.getTailNr();
+        return getClass().getSimpleName() +", " + this.row + this.place;
     }
 
     public void show() {
-        System.out.println(toString() + " reserved by " + this.passenger.getName());
+        System.out.println(toString());
     }
 }

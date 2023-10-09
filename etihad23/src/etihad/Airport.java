@@ -99,7 +99,7 @@ public class Airport {
 
   public void show(boolean isDeparture) {
     String n = isDeparture? "Departing " : "Arriving ";
-    System.out.print(n + name);
+    System.out.print(n + name + " (" + iataCode + ")");
     catchmentArea[0].show();
   }
 

@@ -14,8 +14,10 @@ public class EtihadBuildUp {
   private static Flight outFlight;
   private Passenger theFirstPassenger;
   private Passenger theSecondPassenger;
+  private Passenger theFirstPassengerBack;
   private Seat theSeatOne;
   private Seat theSeatTwo;
+  private Seat theSeatThree;
   private City inCity;
   private City outCity;
   private Plane thePlane;
@@ -34,11 +36,11 @@ public class EtihadBuildUp {
     build.buildSeat();
     build.buildPassenger();
     build.buildFlight();
-    System.out.println("--------------------------------");
+    System.out.println("------------------------------------------------------------------------");
     inFlight.show();
-    System.out.println("--------------------------------");
+    System.out.println("------------------------------------------------------------------------");
     outFlight.show();
-    System.out.println("--------------------------------");
+    System.out.println("------------------------------------------------------------------------");
   }
 
   private void buildCity() {
@@ -71,26 +73,29 @@ public class EtihadBuildUp {
   private void buildSeat() {
     this.theSeatOne = new Seat(3, 'C', this.thePlane);
     this.theSeatTwo = new Seat(3, 'D', this.thePlane);
+    this.theSeatThree = new Seat(5, 'D', this.thePlane);
     this.thePlane.addSeat(theSeatOne);
     this.thePlane.addSeat(theSeatTwo);
+    this.thePlane.addSeat(theSeatThree);
   }
 
   private void buildPassenger() {
-    theFirstPassenger = new Passenger("Max Mustermann");
-    theSecondPassenger = new Passenger("Sarah Mustermann");
+    theFirstPassenger = new Passenger("Max Mustermann", theSeatOne);
+    theSecondPassenger = new Passenger("Sarah Mustermann", theSeatTwo);
+    theFirstPassengerBack = new Passenger("Max Mustermann", theSeatThree);
   }
 
   private void buildFlight() {
-    System.out.println("--------------------------------");
+    System.out.println("--------------------------------------------------");
     inDate = LocalDate.of(2023, 2, 5);
     List<Passenger> inPassengers = new ArrayList<>();
     inPassengers.add(theFirstPassenger);
     inPassengers.add(theSecondPassenger);
-    inFlight = new Flight(inDate, "1000", outAirport, inAirport, theAirline, inPassengers, theCaptain, theCoPilot, thePlane);
-    System.out.println("--------------------------------");
+    inFlight = new Flight(inDate, "EY103", outAirport, inAirport, theAirline, inPassengers, theCaptain, theCoPilot, thePlane);
+    System.out.println("--------------------------------------------------");
     outDate = LocalDate.of(2023, 3, 25);
     List<Passenger> outPassengers = new ArrayList<>();
-    outPassengers.add(theFirstPassenger);
-    outFlight = new Flight(outDate, "2000", inAirport, outAirport, theAirline, outPassengers, theCaptain, theCoPilot, thePlane);
+    outPassengers.add(theFirstPassengerBack);
+    outFlight = new Flight(outDate, "EY102", inAirport, outAirport, theAirline, outPassengers, theCaptain, theCoPilot, thePlane);
   }
 }
