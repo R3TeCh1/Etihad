@@ -90,6 +90,6 @@ public class Seat {
     }
 
     public void show() {
-        System.out.println(toString());
+        System.out.println( " on " + toString());
     }
 }

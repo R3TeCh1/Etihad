@@ -26,7 +26,7 @@ public class Flight {
   private Airline organizer;
   //Passenger
   private List<Passenger> passengers = new ArrayList<>();
-  private static final int MAX_PASSENGERS = 853;
+  private static final int MAX_BOARDINGCARD = 853;
   //Pilot
   private Pilot captain;
   private Pilot coPilot;
@@ -34,6 +34,8 @@ public class Flight {
   //private List<Pilot> pilots = new ArrayList<>();
   //Plane
   private Plane vehicle;
+  //BoardingCard
+  private List<BoardingCard> boardingCards = new ArrayList<>();
 
 
   /**
@@ -44,22 +46,18 @@ public class Flight {
    * @param origin Die Flughäfen des Ursprungs.
    * @param destination Die Flughäfen des Ziels.
    * @param organizer Die Fluggesellschaft (Airline).
-   * @param passengers Die Liste der Passagiere.
    * @param captain Der Kapitän des Fluges.
    * @param coPilot Der Co-Pilot des Fluges.
-   * //@param flightEngineer Der Flugingenieur des Fluges.
    * @param vehicle Das Flugzeug, das für den Flug verwendet wird.
    */
-  public Flight(LocalDate date, String flightNum, Airport origin, Airport destination, Airline organizer, List<Passenger> passengers, Pilot captain, Pilot coPilot, Plane vehicle){
+  public Flight(LocalDate date, String flightNum, Airport origin, Airport destination, Airline organizer, Pilot captain, Pilot coPilot, Plane vehicle){
     this.date = date;
     this.flightNum = flightNum;
     this.origin = origin;
     this.destination = destination;
     this.organizer = organizer;
-    this.passengers.addAll(passengers);
     this.captain = captain;
     this.coPilot = coPilot;
-    //this.flightEngineer = flightEngineer;
     this.vehicle = vehicle;
 
     System.out.println(toString() + " created");
@@ -110,13 +108,19 @@ public class Flight {
    *
    * @param passenger Der hinzuzufügende Passagier.
    */
-  public void addPassenger(Passenger passenger) {
-    if (passengers.size() < MAX_PASSENGERS) {
-      passengers.add(passenger);
-      System.out.println(toString() + " wurde zum Passagier " + passenger.getName());
-    } else {
-      System.out.println("Der Flug ist ausgebucht, es können keine weiteren Passagiere hinzugefügt werden.");
+  public void addPassenger(List<Passenger> passenger) {
+    for (Passenger p : passenger){
+      if (passengers.size() <= MAX_BOARDINGCARD) {
+        passengers.add(p);
+        System.out.println(toString() + " wurde zum Passagier " + p.getName());
+      } else {
+        System.out.println("Der Flug ist ausgebucht, es können keine weiteren Passagiere hinzugefügt werden.");
+      }
     }
+  }
+
+  public void addBoardingCard(BoardingCard card) {
+    boardingCards.add(card);
   }
 
   /**
@@ -219,6 +223,10 @@ public class Flight {
     return vehicle;
   }
 
+  public List<BoardingCard> getBoardingCard(){
+    return boardingCards;
+  }
+
   //SETTER----------------------------------------------------------------
 
   public void setDate(LocalDate date){
@@ -259,6 +267,10 @@ public class Flight {
 
   public void setVehicle(Plane vehicle){
     this.vehicle = vehicle;
+  }
+
+  public void setBoardingCards(List<BoardingCard> boardingCards) {
+    this.boardingCards = boardingCards;
   }
 
   //SHOW----------------------------------------------------------------

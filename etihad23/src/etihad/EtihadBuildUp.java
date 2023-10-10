@@ -1,6 +1,6 @@
 package etihad;
 
-import java.awt.event.WindowFocusListener;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +25,9 @@ public class EtihadBuildUp {
   private Airport outAirport;
   private LocalDate inDate;
   private LocalDate outDate;
+  private BoardingCard inBoardingCardOne;
+  private BoardingCard inBoardingCardTwo;
+  private BoardingCard outBoardingCardOne;
 
   public static void main(String[] args) {
     EtihadBuildUp build = new EtihadBuildUp();
@@ -91,11 +94,19 @@ public class EtihadBuildUp {
     List<Passenger> inPassengers = new ArrayList<>();
     inPassengers.add(theFirstPassenger);
     inPassengers.add(theSecondPassenger);
-    inFlight = new Flight(inDate, "EY103", outAirport, inAirport, theAirline, inPassengers, theCaptain, theCoPilot, thePlane);
+    inFlight = new Flight(inDate, "EY103", outAirport, inAirport, theAirline, theCaptain, theCoPilot, thePlane);
+    inFlight.addPassenger(inPassengers);
     System.out.println("--------------------------------------------------");
     outDate = LocalDate.of(2023, 3, 25);
     List<Passenger> outPassengers = new ArrayList<>();
     outPassengers.add(theFirstPassengerBack);
-    outFlight = new Flight(outDate, "EY102", inAirport, outAirport, theAirline, outPassengers, theCaptain, theCoPilot, thePlane);
+    outFlight = new Flight(outDate, "EY102", inAirport, outAirport, theAirline, theCaptain, theCoPilot, thePlane);
+    outFlight.addPassenger(outPassengers);
+  }
+
+  private void buildBoardingCard() {
+    inBoardingCardOne = new BoardingCard(new BigInteger("213212414224512"), "65", inDate, theFirstPassenger, inFlight, theSeatOne);
+    inBoardingCardTwo = new BoardingCard(new BigInteger("412414512512555"), "65", inDate, theSecondPassenger, inFlight, theSeatTwo);
+    outBoardingCardOne = new BoardingCard(new BigInteger("645724323535235"), "34", outDate, theFirstPassenger, outFlight, theSeatThree);
   }
 }

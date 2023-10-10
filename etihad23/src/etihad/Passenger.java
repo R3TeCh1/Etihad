@@ -10,7 +10,7 @@ import java.util.Set;
 public class Passenger {
   private String name;
   private Seat seat;
-  private Set<Flight> flights = new HashSet<Flight>();
+  private Set<Flight> flights = new HashSet<>();
 
   public void addFlight(Flight f){ flights.add(f); }
 
@@ -50,7 +50,7 @@ public class Passenger {
   //SHOW--------------------------------------------------------
 
   public void show(){
-    System.out.print("" + this.name + " on ");
+    System.out.print("" + this.name);
     this.seat.show();
   }
   //TOSTRING--------------------------------------------------------
