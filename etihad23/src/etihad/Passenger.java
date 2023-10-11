@@ -12,7 +12,9 @@ public class Passenger {
   private Seat seat;
   private Set<Flight> flights = new HashSet<>();
 
-  public void addFlight(Flight f){ flights.add(f); }
+  public void addFlight(Flight f) {
+    flights.add(f);
+  }
 
   //Konstruktor--------------------------------------------------------
   public Passenger(String name, Seat seat){
