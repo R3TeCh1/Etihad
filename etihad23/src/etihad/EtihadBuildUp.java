@@ -5,8 +5,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Die Klasse EtihadBuildUp dient dazu, verschiedene Objekte zu erstellen und Flüge aufzubauen.
+ *
+ * @author Kadir Erzurum
+ * @version 11.10.2023
+ */
 public class EtihadBuildUp {
-
   private Airline theAirline;
   private Pilot theCaptain;
   private Pilot theCoPilot;
@@ -25,10 +30,15 @@ public class EtihadBuildUp {
   private Airport outAirport;
   private LocalDate inDate;
   private LocalDate outDate;
-  private static BoardingCard inBoardingCardOne;
-  private static BoardingCard inBoardingCardTwo;
-  private static BoardingCard outBoardingCardOne;
+  private BoardingCard inBoardingCardOne;
+  private BoardingCard inBoardingCardTwo;
+  private BoardingCard outBoardingCardOne;
 
+  /**
+   * Die Hauptmethode, die die Erstellung von Objekten und den Aufbau von Flügen koordiniert.
+   *
+   * @param args Die Eingabeparameter für das Programm (nicht verwendet).
+   */
   public static void main(String[] args) {
     EtihadBuildUp build = new EtihadBuildUp();
     build.buildCity();
@@ -48,11 +58,17 @@ public class EtihadBuildUp {
     System.out.println("------------------------------------------------------------------------");
   }
 
+  /**
+   * Erstellt die Städte für den Abflug und die Ankunft.
+   */
   private void buildCity() {
     outCity = new City("Abu Dhabi");
     inCity = new City("New York");
   }
 
+  /**
+   * Erstellt die Flughäfen für den Abflug und die Ankunft und verknüpft sie mit den Städten.
+   */
   private void buildAirport() {
     outAirport = new Airport("Abu Dhabi International Airport", "AUH", outCity);
     inAirport = new Airport("John F. Kennedy International Airport", "JFK", inCity);
@@ -60,10 +76,16 @@ public class EtihadBuildUp {
     inCity.addInfrastructure(inAirport);
   }
 
+  /**
+   * Erstellt die Fluggesellschaft (Airline).
+   */
   private void buildAirline() {
     theAirline = new Airline("Etihad Airways", "EY");
   }
 
+  /**
+   * Erstellt die Piloten (Kapitän und Copilot) und fügt sie der Fluggesellschaft hinzu.
+   */
   private void buildPilot() {
     theCaptain = new Pilot("Brierley, Mark");
     theCoPilot = new Pilot("Matta, Jihad");
@@ -71,10 +93,16 @@ public class EtihadBuildUp {
     theAirline.addEmployee(theCoPilot);
   }
 
+  /**
+   * Erstellt das Flugzeug (Plane).
+   */
   private void buildPlane() {
     thePlane = new Plane("Boeing 787-9 Dreamliner", "8964BC", "A6-BLL");
   }
 
+  /**
+   * Erstellt Sitzplätze (Seats) und fügt sie dem Flugzeug hinzu.
+   */
   private void buildSeat() {
     this.theSeatOne = new Seat(3, 'C', this.thePlane);
     this.theSeatTwo = new Seat(3, 'D', this.thePlane);
@@ -84,12 +112,18 @@ public class EtihadBuildUp {
     this.thePlane.addSeat(theSeatThree);
   }
 
+  /**
+   * Erstellt Passagiere (Passengers) und weist ihnen Sitzplätze zu.
+   */
   private void buildPassenger() {
     theFirstPassenger = new Passenger("Mustermann, Max", theSeatOne);
     theSecondPassenger = new Passenger("Mustermann, Sarah", theSeatTwo);
     theFirstPassengerBack = new Passenger("Mustermann, Max", theSeatThree);
   }
 
+  /**
+   * Erstellt Hin- und Rückflüge mit den entsprechenden Daten.
+   */
   private void buildFlight() {
     System.out.println("--------------------------------------------------");
     inDate = LocalDate.of(2023, 2, 5);
@@ -100,6 +134,9 @@ public class EtihadBuildUp {
     outFlight = new Flight(outDate, "EY102", inAirport, outAirport, theAirline, theCaptain, theCoPilot, thePlane);
   }
 
+  /**
+   * Diese Methode erstellt die Boarding Karten und weist die Flüge zu.
+   */
   private void buildBoardingCard() {
     BigInteger inBoardingCardIDOne = inFlight.generateBoardingCardID();
     BigInteger inBoardingCardIDTwo = inFlight.generateBoardingCardID();
@@ -110,7 +147,7 @@ public class EtihadBuildUp {
     String outTime = inFlight.generateRandomTime();
     inBoardingCardOne = new BoardingCard(inBoardingCardIDOne, inGate, inDate, theFirstPassenger, theSeatOne, inTime);
     inBoardingCardTwo = new BoardingCard(inBoardingCardIDTwo, inGate, inDate, theSecondPassenger, theSeatTwo, inTime);
-    outBoardingCardOne = new BoardingCard(outBoardingCardIDOne, outGate, outDate, theSecondPassenger, theSeatThree, outTime);
+    outBoardingCardOne = new BoardingCard(outBoardingCardIDOne, outGate, outDate, theFirstPassengerBack, theSeatThree, outTime);
 
     List<BoardingCard> inBoardingCards = new ArrayList<>();
     inBoardingCards.add(inBoardingCardOne);

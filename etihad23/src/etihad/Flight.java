@@ -8,10 +8,10 @@ import java.util.Random;
 
 /**
  * Die Klasse Flight repräsentiert einen Flug mit verschiedenen Eigenschaften wie Datum, Flugnummer,
- * Herkunfts- und Zielorte, Airline, Passagierliste, Piloten und Flugzeug.
+ * Herkunfts- und Zielorte, Airline, Piloten und Flugzeug.
  *
  * @author Kadir Erzurum
- * @version 01.10.2023
+ * @version 11.10.2023
  */
 public class Flight {
 
@@ -170,6 +170,11 @@ public class Flight {
     System.out.println(toString() + " hat den Flug erfolgreich beendet.");
   }
 
+  /**
+   * Generiert eine zufälliges Boardind Card ID, bestehend aus einer Zahl, welches 15 Stellen hat.
+   *
+   * @return Die zufällige ID.
+   */
   public BigInteger generateBoardingCardID() {
     Random random = new Random();
     StringBuilder numberString = new StringBuilder("1");
@@ -192,6 +197,11 @@ public class Flight {
     return letter + String.valueOf(number);
   }
 
+  /**
+   * Generiert eine zufälliges Zeit, bestehend aus Stunden und Minuten.
+   *
+   * @return Die zufällige Zeit.
+   */
   public String generateRandomTime() {
     Random random = new Random();
     int hours = random.nextInt(24);

@@ -1,30 +1,34 @@
 package etihad;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
+ * Die Klasse Passenger repräsentiert einen Passagier mit Eigenschaften wie Name, Sitzplatz und
+ * zugehörigen Boarding-Karten.
+ *
  * @author Alex
- * @version 30.09.2023
+ * @version 11.10.2023
  */
 public class Passenger {
   private String name;
   private Seat seat;
   private List<BoardingCard> boardingCards = new ArrayList<>();
 
-  public void addBoardingCard(BoardingCard boardingCard) {
-    boardingCards.add(boardingCard);
-  }
-
-  //Konstruktor--------------------------------------------------------
+  /**
+   * Konstruktor für die Passenger-Klasse.
+   *
+   * @param name Der Name des Passagiers.
+   * @param seat Der zugehörige Sitzplatz des Passagiers.
+   */
   public Passenger(String name, Seat seat){
     this.name = name;
     this.seat = seat;
   }
 
-  //Getter--------------------------------------------------------
+  /**
+   * Getter Methoden
+   */
   public String getName(){
     return name;
   }
@@ -37,7 +41,9 @@ public class Passenger {
     return boardingCards;
   }
 
-  //Setter--------------------------------------------------------
+  /**
+   * Setter Methoden
+   */
   public void setName(String name){
     this.name = name;
   }
@@ -50,7 +56,19 @@ public class Passenger {
     this.boardingCards = boardingCards;
   }
 
-  //SHOW--------------------------------------------------------
+  /**
+   * Fügt dem Passagier eine Boarding-Karte hinzu, um die Zuordnung zwischen Passagier und Flug
+   * herzustellen.
+   *
+   * @param boardingCard Die hinzuzufügende Boarding-Karte.
+   */
+  public void addBoardingCard(BoardingCard boardingCard) {
+    boardingCards.add(boardingCard);
+  }
+
+  /**
+   * Zeigt Informationen zum Passagier, einschließlich des Namens.
+   */
   public void show(){
     System.out.print("" + this.name);
     System.out.println();
