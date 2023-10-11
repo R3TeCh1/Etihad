@@ -109,10 +109,12 @@ public class Flight {
    * @param passengers Der hinzuzufügende Passagier.
    */
   public void addPassenger(List<Passenger> passengers) {
+    String gate = generateRandomGate();
+    String time = generateRandomTime();
     for (Passenger passenger : passengers){
       if (this.passengers.size() < MAX_BOARDINGCARD) {
         this.passengers.add(passenger);
-        BoardingCard boardingCard = new BoardingCard(generateBoardingCardID(), "Gate", date, passenger, this, passenger.getSeat());
+        BoardingCard boardingCard = new BoardingCard(generateBoardingCardID(), gate, date, passenger, this, passenger.getSeat(), time);
         boardingCards.add(boardingCard);
         System.out.println(toString() + " wurde zum Passagier " + passenger.getName());
       } else {
@@ -192,6 +194,25 @@ public class Flight {
     return new BigInteger(numberString.toString());
   }
 
+  /**
+   * Generiert ein zufälliges Gate, bestehend aus einem Buchstaben und einer Zahl von 1 bis 99.
+   *
+   * @return Das zufällige Gate.
+   */
+  private String generateRandomGate() {
+    Random random = new Random();
+    char letter = (char) ('A' + random.nextInt(26));
+    int number = random.nextInt(99) + 1;
+    return letter + String.valueOf(number);
+  }
+
+  private String generateRandomTime() {
+    Random random = new Random();
+    int hours = random.nextInt(24);
+    int minutes = random.nextInt(60);
+    String formattedTime = String.format("%02d:%02d", hours, minutes);
+    return formattedTime;
+  }
 
   //GETTER----------------------------------------------------------------
 
@@ -303,9 +324,9 @@ public class Flight {
     origin.show(true);
     destination.show(false);
     vehicle.show();
-    System.out.println("Carrying Passenger(s): ");
-    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     for (Passenger passenger : passengers) {
+      System.out.print("Carrying Passenger: ");
       passenger.show();
       System.out.print("Boarding Card: ");
       for (BoardingCard boardingCard : boardingCards) {

@@ -66,7 +66,7 @@ public class Passenger {
   //SHOW--------------------------------------------------------
   public void show(){
     System.out.print("" + this.name);
-    this.seat.show();
+    System.out.println();
   }
 
   //TOSTRING--------------------------------------------------------

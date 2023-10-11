@@ -1,6 +1,7 @@
 package etihad;
 
 import java.math.BigInteger;
+import java.sql.Time;
 import java.time.LocalDate;
 
 /**
@@ -15,14 +16,18 @@ public class BoardingCard {
   private Passenger passenger;
   private Flight flight;
   private Seat seat;
+  private String time;
 
-  public BoardingCard(BigInteger iDNumber, String gate, LocalDate boardingDay, Passenger passenger, Flight flight, Seat seat) {
+  public BoardingCard(BigInteger iDNumber, String gate, LocalDate boardingDay, Passenger passenger, Flight flight, Seat seat, String time) {
     this.iDNumber = iDNumber;
     this.gate = gate;
     this.boardingDay = boardingDay;
     this.passenger = passenger;
     this.flight = flight;
     this.seat = seat;
+    this.time = time;
+
+    System.out.println(toString() + " created");
   }
 
   //GETTER
@@ -50,6 +55,10 @@ public class BoardingCard {
     return seat;
   }
 
+  public String getTime() {
+    return time;
+  }
+
   //SETTER
   public void setiDNumber(BigInteger iDNumber) {
     this.iDNumber = iDNumber;
@@ -75,10 +84,19 @@ public class BoardingCard {
     this.seat = seat;
   }
 
+  public void setTime(String time) {
+    this.time = time;
+  }
+
+
   public void show() {
     System.out.println(getiDNumber());
-    System.out.println("Flight date: " + getBoardingDay() + " " + " at Gate: " + getGate());
-    System.out.println("|-----------------------------------------------------------------|");
+    System.out.println("Flight date: " + getBoardingDay());
+    System.out.println("Time: " + getTime());
+    System.out.println("Gate: " + getGate());
+    System.out.print("Seat: ");
+    seat.show();
+    System.out.println("-----------------------------------------------------------------------|");
   }
 
   @Override
