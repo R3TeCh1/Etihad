@@ -26,8 +26,6 @@ public class Flight {
   private Airport destination;
   //Airline
   private Airline organizer;
-  //Passenger
-  private List<Passenger> passengers = new ArrayList<>();
   //Pilot
   private Pilot captain;
   private Pilot coPilot;
@@ -103,28 +101,16 @@ public class Flight {
     System.out.println("Der Flug " + toString() + " " + " wurde storniert.");
   }
 
-  /**
-   * Fügt einen Passagier zur Passagierliste hinzu.
-   *
-   * @param passengers Der hinzuzufügende Passagier.
-   */
-  public void addPassenger(List<Passenger> passengers) {
-    String gate = generateRandomGate();
-    String time = generateRandomTime();
-    for (Passenger passenger : passengers){
-      if (this.passengers.size() < MAX_BOARDINGCARD) {
-        this.passengers.add(passenger);
-        BoardingCard boardingCard = new BoardingCard(generateBoardingCardID(), gate, date, passenger, this, passenger.getSeat(), time);
-        boardingCards.add(boardingCard);
+  public void addBoardingCard(List<BoardingCard> boardingCards) {
+    for (BoardingCard boardingCard : boardingCards) {
+      if (this.boardingCards.size() < MAX_BOARDINGCARD) {
+        Passenger passenger = boardingCard.getPassenger();
+        this.boardingCards.add(boardingCard);
         System.out.println(toString() + " wurde zum Passagier " + passenger.getName());
       } else {
-        System.out.println("Der Flug ist ausgebucht, es können keine weiteren Passagiere hinzugefügt werden.");
+        System.out.println("Der Flug ist ausgebucht, es können keine weiteren Boarding Cards hinzugefügt werden.");
       }
     }
-  }
-
-  public void addBoardingCard(BoardingCard boardingCard) {
-    boardingCards.add(boardingCard);
   }
 
   /**
@@ -184,7 +170,7 @@ public class Flight {
     System.out.println(toString() + " hat den Flug erfolgreich beendet.");
   }
 
-  private BigInteger generateBoardingCardID() {
+  public BigInteger generateBoardingCardID() {
     Random random = new Random();
     StringBuilder numberString = new StringBuilder("1");
     for (int i = 2; i <= 15; i++) {
@@ -199,19 +185,18 @@ public class Flight {
    *
    * @return Das zufällige Gate.
    */
-  private String generateRandomGate() {
+  public String generateRandomGate() {
     Random random = new Random();
     char letter = (char) ('A' + random.nextInt(26));
     int number = random.nextInt(99) + 1;
     return letter + String.valueOf(number);
   }
 
-  private String generateRandomTime() {
+  public String generateRandomTime() {
     Random random = new Random();
     int hours = random.nextInt(24);
     int minutes = random.nextInt(60);
-    String formattedTime = String.format("%02d:%02d", hours, minutes);
-    return formattedTime;
+    return String.format("%02d:%02d", hours, minutes);
   }
 
   //GETTER----------------------------------------------------------------
@@ -234,10 +219,6 @@ public class Flight {
 
   public Airline getOrganizer(){
     return organizer;
-  }
-
-  public List<Passenger> getPassengers(){
-    return passengers;
   }
 
   public Pilot getCaptain(){
@@ -287,9 +268,6 @@ public class Flight {
     this.organizer = organizer;
   }
 
-  public void setPassenger(List<Passenger> passengers){
-    this.passengers = passengers;
-  }
 
   public void setCaptain(Pilot captain){
     this.captain = captain;
@@ -325,17 +303,15 @@ public class Flight {
     destination.show(false);
     vehicle.show();
     System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-    for (Passenger passenger : passengers) {
+    for (BoardingCard boardingCard : boardingCards) {
+      Passenger passenger = boardingCard.getPassenger();
       System.out.print("Carrying Passenger: ");
-      passenger.show();
+      System.out.println(passenger.getName());
       System.out.print("Boarding Card: ");
-      for (BoardingCard boardingCard : boardingCards) {
-        if (boardingCard.getPassenger() == passenger) {
-          boardingCard.show();
-        }
-      }
+      boardingCard.show();
     }
   }
+
 
   //TOSTRING--------------------------------------------------------
   /**

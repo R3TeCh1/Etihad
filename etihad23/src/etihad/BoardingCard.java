@@ -3,6 +3,7 @@ package etihad;
 import java.math.BigInteger;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -18,12 +19,11 @@ public class BoardingCard {
   private Seat seat;
   private String time;
 
-  public BoardingCard(BigInteger iDNumber, String gate, LocalDate boardingDay, Passenger passenger, Flight flight, Seat seat, String time) {
+  public BoardingCard(BigInteger iDNumber, String gate, LocalDate boardingDay, Passenger passenger, Seat seat, String time) {
     this.iDNumber = iDNumber;
     this.gate = gate;
     this.boardingDay = boardingDay;
     this.passenger = passenger;
-    this.flight = flight;
     this.seat = seat;
     this.time = time;
 
@@ -86,6 +86,19 @@ public class BoardingCard {
 
   public void setTime(String time) {
     this.time = time;
+  }
+
+  /**
+   * Fügt einen Passagier zur Passagierliste hinzu.
+   *
+   * @param passengers Der hinzuzufügende Passagier.
+   */
+  public void addPassenger(List<Passenger> passengers) {
+    passengers.add(passenger);
+  }
+
+  public void addFlight(Flight flight) {
+    this.flight = flight;
   }
 
 

@@ -12,12 +12,7 @@ import java.util.Set;
 public class Passenger {
   private String name;
   private Seat seat;
-  private Set<Flight> flights = new HashSet<>();
   private List<BoardingCard> boardingCards = new ArrayList<>();
-
-  public void addFlight(Flight f) {
-    flights.add(f);
-  }
 
   public void addBoardingCard(BoardingCard boardingCard) {
     boardingCards.add(boardingCard);
@@ -38,10 +33,6 @@ public class Passenger {
     return seat;
   }
 
-  public Set<Flight> getFlights() {
-    return flights;
-  }
-
   public List<BoardingCard> getBoardingCards() {
     return boardingCards;
   }
@@ -53,10 +44,6 @@ public class Passenger {
 
   public void setSeat(Seat seat){
     this.seat = seat;
-  }
-
-  public void setFlights(Set<Flight> flights){
-    this.flights = flights;
   }
 
   public void setBoardingCards(List<BoardingCard> boardingCards) {

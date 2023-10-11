@@ -25,6 +25,9 @@ public class EtihadBuildUp {
   private Airport outAirport;
   private LocalDate inDate;
   private LocalDate outDate;
+  private static BoardingCard inBoardingCardOne;
+  private static BoardingCard inBoardingCardTwo;
+  private static BoardingCard outBoardingCardOne;
 
   public static void main(String[] args) {
     EtihadBuildUp build = new EtihadBuildUp();
@@ -36,6 +39,8 @@ public class EtihadBuildUp {
     build.buildSeat();
     build.buildPassenger();
     build.buildFlight();
+    build.buildBoardingCard();
+
     System.out.println("------------------------------------------------------------------------");
     inFlight.show();
     System.out.println("------------------------------------------------------------------------");
@@ -80,24 +85,40 @@ public class EtihadBuildUp {
   }
 
   private void buildPassenger() {
-    theFirstPassenger = new Passenger("Max Mustermann", theSeatOne);
-    theSecondPassenger = new Passenger("Sarah Mustermann", theSeatTwo);
-    theFirstPassengerBack = new Passenger("Max Mustermann", theSeatThree);
+    theFirstPassenger = new Passenger("Mustermann, Max", theSeatOne);
+    theSecondPassenger = new Passenger("Mustermann, Sarah", theSeatTwo);
+    theFirstPassengerBack = new Passenger("Mustermann, Max", theSeatThree);
   }
 
   private void buildFlight() {
     System.out.println("--------------------------------------------------");
     inDate = LocalDate.of(2023, 2, 5);
-    List<Passenger> inPassengers = new ArrayList<>();
-    inPassengers.add(theFirstPassenger);
-    inPassengers.add(theSecondPassenger);
     inFlight = new Flight(inDate, "EY103", outAirport, inAirport, theAirline, theCaptain, theCoPilot, thePlane);
-    inFlight.addPassenger(inPassengers);
+
     System.out.println("--------------------------------------------------");
     outDate = LocalDate.of(2023, 3, 25);
-    List<Passenger> outPassengers = new ArrayList<>();
-    outPassengers.add(theFirstPassengerBack);
     outFlight = new Flight(outDate, "EY102", inAirport, outAirport, theAirline, theCaptain, theCoPilot, thePlane);
-    outFlight.addPassenger(outPassengers);
+  }
+
+  private void buildBoardingCard() {
+    BigInteger inBoardingCardIDOne = inFlight.generateBoardingCardID();
+    BigInteger inBoardingCardIDTwo = inFlight.generateBoardingCardID();
+    String inGate = inFlight.generateRandomGate();
+    String inTime = inFlight.generateRandomTime();
+    BigInteger outBoardingCardIDOne = inFlight.generateBoardingCardID();
+    String outGate = inFlight.generateRandomGate();
+    String outTime = inFlight.generateRandomTime();
+    inBoardingCardOne = new BoardingCard(inBoardingCardIDOne, inGate, inDate, theFirstPassenger, theSeatOne, inTime);
+    inBoardingCardTwo = new BoardingCard(inBoardingCardIDTwo, inGate, inDate, theSecondPassenger, theSeatTwo, inTime);
+    outBoardingCardOne = new BoardingCard(outBoardingCardIDOne, outGate, outDate, theSecondPassenger, theSeatThree, outTime);
+
+    List<BoardingCard> inBoardingCards = new ArrayList<>();
+    inBoardingCards.add(inBoardingCardOne);
+    inBoardingCards.add(inBoardingCardTwo);
+    inFlight.addBoardingCard(inBoardingCards);
+
+    List<BoardingCard> outBoardingCards = new ArrayList<>();
+    outBoardingCards.add(outBoardingCardOne);
+    outFlight.addBoardingCard(outBoardingCards);
   }
 }
