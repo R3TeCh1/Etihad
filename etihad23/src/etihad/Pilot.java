@@ -8,7 +8,7 @@ import java.util.Set;
  * Ein Pilot kann von einer Fluggesellschaft eingestellt und entlassen werden sowie für Flüge gebucht werden.
  *
  * @author Kadir Erzurum
- * @version 01.10.2023
+ * @version 11.10.2023
  */
 public class Pilot {
   //Deklarieren--------------------------------------------------------

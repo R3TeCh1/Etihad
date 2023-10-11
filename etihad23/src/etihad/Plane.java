@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * @author David Rischow
- * @version 30.09.2023
+ * @version 11.10.2023
  */
 public class Plane {
     private final String model;

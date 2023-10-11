@@ -4,10 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * Die Klasse Airport repräsentiert einen Flughafen mit verschiedenen Eigenschaften wie Name, IATA-Code,
+ * Einzugsgebiet (verknüpft mit einer Stadt), Abflüge und Ankünfte von Flügen.
+ *
  * @author Nazanin
- * @version 30.09.2023
+ * @version 11.10.2023
  */
-
 public class Airport {
 
   private String name;
@@ -17,7 +19,15 @@ public class Airport {
   Set<Flight> arrivals = new HashSet<>();
 
 
-  //constructor
+  /**
+   * Konstruktor für die Airport-Klasse mit mehreren Flugzeugen und Ankunft / Abflug-Sets.
+   *
+   * @param name Der Name des Flughafens.
+   * @param iataCode Der IATA-Code des Flughafens.
+   * @param catchmentArea Das Einzugsgebiet des Flughafens, in Form einer Stadt.
+   * @param departures Die Menge der abfliegenden Flüge.
+   * @param arrivals Die Menge der ankommenden Flüge.
+   */
   public Airport(String name, String iataCode, City[] catchmentArea, Set<Flight> departures, Set<Flight> arrivals) {
     this.name = name;
     this.iataCode = iataCode;
@@ -27,6 +37,13 @@ public class Airport {
     System.out.println(toString() + " created");
   }
 
+  /**
+   * Konstruktor für die Airport-Klasse mit einer Stadt als Einzugsgebiet.
+   *
+   * @param name Der Name des Flughafens.
+   * @param iataCode Der IATA-Code des Flughafens.
+   * @param catchmentArea Die Stadt, die das Einzugsgebiet des Flughafens darstellt.
+   */
   public Airport(String name, String iataCode, City catchmentArea){
     this.name = name;
     this.iataCode = iataCode;
