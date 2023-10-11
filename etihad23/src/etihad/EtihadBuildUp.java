@@ -25,9 +25,6 @@ public class EtihadBuildUp {
   private Airport outAirport;
   private LocalDate inDate;
   private LocalDate outDate;
-  private BoardingCard inBoardingCardOne;
-  private BoardingCard inBoardingCardTwo;
-  private BoardingCard outBoardingCardOne;
 
   public static void main(String[] args) {
     EtihadBuildUp build = new EtihadBuildUp();
@@ -102,11 +99,5 @@ public class EtihadBuildUp {
     outPassengers.add(theFirstPassengerBack);
     outFlight = new Flight(outDate, "EY102", inAirport, outAirport, theAirline, theCaptain, theCoPilot, thePlane);
     outFlight.addPassenger(outPassengers);
-  }
-
-  private void buildBoardingCard() {
-    inBoardingCardOne = new BoardingCard(new BigInteger("213212414224512"), "65", inDate, theFirstPassenger, inFlight, theSeatOne);
-    inBoardingCardTwo = new BoardingCard(new BigInteger("412414512512555"), "65", inDate, theSecondPassenger, inFlight, theSeatTwo);
-    outBoardingCardOne = new BoardingCard(new BigInteger("645724323535235"), "34", outDate, theFirstPassenger, outFlight, theSeatThree);
   }
 }

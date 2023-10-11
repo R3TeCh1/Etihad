@@ -1,8 +1,10 @@
 package etihad;
 
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Die Klasse Flight repräsentiert einen Flug mit verschiedenen Eigenschaften wie Datum, Flugnummer,
@@ -26,17 +28,15 @@ public class Flight {
   private Airline organizer;
   //Passenger
   private List<Passenger> passengers = new ArrayList<>();
-  private static final int MAX_BOARDINGCARD = 853;
   //Pilot
   private Pilot captain;
   private Pilot coPilot;
   private Pilot flightEngineer;
-  //private List<Pilot> pilots = new ArrayList<>();
   //Plane
   private Plane vehicle;
   //BoardingCard
   private List<BoardingCard> boardingCards = new ArrayList<>();
-
+  private static final int MAX_BOARDINGCARD = 853;
 
   /**
    * Konstruktor für die Klasse Flight.
@@ -106,21 +106,23 @@ public class Flight {
   /**
    * Fügt einen Passagier zur Passagierliste hinzu.
    *
-   * @param passenger Der hinzuzufügende Passagier.
+   * @param passengers Der hinzuzufügende Passagier.
    */
-  public void addPassenger(List<Passenger> passenger) {
-    for (Passenger p : passenger){
-      if (passengers.size() <= MAX_BOARDINGCARD) {
-        passengers.add(p);
-        System.out.println(toString() + " wurde zum Passagier " + p.getName());
+  public void addPassenger(List<Passenger> passengers) {
+    for (Passenger passenger : passengers){
+      if (this.passengers.size() < MAX_BOARDINGCARD) {
+        this.passengers.add(passenger);
+        BoardingCard boardingCard = new BoardingCard(generateBoardingCardID(), "Gate", date, passenger, this, passenger.getSeat());
+        boardingCards.add(boardingCard);
+        System.out.println(toString() + " wurde zum Passagier " + passenger.getName());
       } else {
         System.out.println("Der Flug ist ausgebucht, es können keine weiteren Passagiere hinzugefügt werden.");
       }
     }
   }
 
-  public void addBoardingCard(BoardingCard card) {
-    boardingCards.add(card);
+  public void addBoardingCard(BoardingCard boardingCard) {
+    boardingCards.add(boardingCard);
   }
 
   /**
@@ -180,6 +182,16 @@ public class Flight {
     System.out.println(toString() + " hat den Flug erfolgreich beendet.");
   }
 
+  private BigInteger generateBoardingCardID() {
+    Random random = new Random();
+    StringBuilder numberString = new StringBuilder("1");
+    for (int i = 2; i <= 15; i++) {
+      int digit = random.nextInt(10);
+      numberString.append(digit);
+    }
+    return new BigInteger(numberString.toString());
+  }
+
 
   //GETTER----------------------------------------------------------------
 
@@ -223,7 +235,12 @@ public class Flight {
     return vehicle;
   }
 
-  public List<BoardingCard> getBoardingCard(){
+  /**
+   * Gibt die Boarding Cards für diesen Flug zurück.
+   *
+   * @return Eine Liste von Boarding Cards für den Flug.
+   */
+  public List<BoardingCard> getBoardingCards() {
     return boardingCards;
   }
 
@@ -279,21 +296,24 @@ public class Flight {
     System.out.print("Offered by ");
     organizer.show();
     System.out.print("Flown by ");
-        captain.show(true);
+    captain.show(true);
     System.out.print(" [and ");
-      coPilot.show(false);
+    coPilot.show(false);
     System.out.print("]\n");
     origin.show(true);
     destination.show(false);
     vehicle.show();
     System.out.println("Carrying Passenger(s): ");
-    List<Passenger> nPassenger = new ArrayList<>();
+    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     for (Passenger passenger : passengers) {
-      if (passenger != null) {
-        nPassenger.add(passenger);
+      passenger.show();
+      System.out.print("Boarding Card: ");
+      for (BoardingCard boardingCard : boardingCards) {
+        if (boardingCard.getPassenger() == passenger) {
+          boardingCard.show();
+        }
       }
     }
-    nPassenger.forEach(Passenger::show);
   }
 
   //TOSTRING--------------------------------------------------------

@@ -1,6 +1,8 @@
 package etihad;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -11,9 +13,14 @@ public class Passenger {
   private String name;
   private Seat seat;
   private Set<Flight> flights = new HashSet<>();
+  private List<BoardingCard> boardingCards = new ArrayList<>();
 
   public void addFlight(Flight f) {
     flights.add(f);
+  }
+
+  public void addBoardingCard(BoardingCard boardingCard) {
+    boardingCards.add(boardingCard);
   }
 
   //Konstruktor--------------------------------------------------------
@@ -35,13 +42,16 @@ public class Passenger {
     return flights;
   }
 
+  public List<BoardingCard> getBoardingCards() {
+    return boardingCards;
+  }
+
   //Setter--------------------------------------------------------
   public void setName(String name){
     this.name = name;
   }
 
   public void setSeat(Seat seat){
-
     this.seat = seat;
   }
 
@@ -49,12 +59,16 @@ public class Passenger {
     this.flights = flights;
   }
 
-  //SHOW--------------------------------------------------------
+  public void setBoardingCards(List<BoardingCard> boardingCards) {
+    this.boardingCards = boardingCards;
+  }
 
+  //SHOW--------------------------------------------------------
   public void show(){
     System.out.print("" + this.name);
     this.seat.show();
   }
+
   //TOSTRING--------------------------------------------------------
   @Override
   public String toString(){

@@ -75,6 +75,12 @@ public class BoardingCard {
     this.seat = seat;
   }
 
+  public void show() {
+    System.out.println(getiDNumber());
+    System.out.println("Flight date: " + getBoardingDay() + " " + " at Gate: " + getGate());
+    System.out.println("|-----------------------------------------------------------------|");
+  }
+
   @Override
   public String toString() {
     return getClass().getSimpleName() + " " + iDNumber;
